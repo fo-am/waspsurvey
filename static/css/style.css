@@ -1,0 +1,12 @@
+
+.image-label input[type="checkbox"] + img {
+    border: 3px solid #fff;
+}
+
+.image-checkbox {
+    display: none;
+}
+
+.image-label input[type="checkbox"]:checked + img {
+    border: 3px solid #888;
+}

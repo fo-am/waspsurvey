@@ -27,28 +27,18 @@
                 {% endif %}
 	        {% for field in form %}
 
-		<h2>{{ field.id_for_label }}</h2>
-		<!-- {{ field.data }} -->
-		<img src="/static/images/{{ field.data.label }}">
+		<label class="image-label" for="{{ field.id_for_label }}">
 
-
-<!--		<pre> {% filter force_escape %} {% debug field %} {% endfilter %} </pre> -->
-
-<!--		{{ field.name }}
-		
-		<input type="radio"
-		       name="{{ form.name.name }}"
-		       id="{{ form.name.id_for_label }}"
-		       {% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %}
-		       maxlength="{{ form.name.field.max_length }}"
-		       {% if form.name.field.required %}required{% endif %}>
-		<label for="{{ form.name.id_for_label }}">
-		  {{ form.name.field.label }}
+		  
+		  <input type="checkbox"
+			 class="image-checkbox"
+			 name="{{field.data.name}}"
+			 value="{{field.data.value}}"
+			 category="{{field.data.category}}"
+			 id="{{ field.id_for_label }}">
+		  <img src="/static/images/{{ field.data.label }}">
 		</label>
-    -->            
-{{ field }}
-
-
+		
                 {% endfor%}
                 {% if form.field.widget.input_type == 'select' %}
                 </select>

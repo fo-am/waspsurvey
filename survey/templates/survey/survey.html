@@ -31,10 +31,8 @@
 		<form action="{% url 'survey-detail' id=survey.id %}" method="post">
 	{% endif %}
 	{% csrf_token %}
-        <h3> {% trans "Questions" %} </h3>
 
 	{% for category in categories %}
-            <h3> {{category}} </h3>
 	    {% if category.template == 'image select multiple' %}
 	    {% include "survey/image_multiple.html" %}
 	    {% else %}
