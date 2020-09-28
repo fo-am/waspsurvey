@@ -22,9 +22,6 @@
 
 
 {% block body %}
-	<h1> {{survey.name}} </h1>
-	<div class="survey-description"> {{survey.description|safe}} </div>
-	<div>
 	{% if step and step != 0 %}
 		<form action="{% url 'survey-detail-step' id=survey.id step=step %}" method="post">
 	{% else %}
@@ -33,6 +30,7 @@
 	{% csrf_token %}
 
 	{% for category in categories %}
+	<h1> {{category}} </h1>
 	    {% if category.template == 'image select multiple' %}
 	    {% include "survey/image_multiple.html" %}
 	    {% else %}
@@ -44,7 +42,7 @@
 	    <input
             class="btn btn-default btn-lg"
 	        type="submit"
-	        value="{% trans "I'm done!" %}"
+	        value="{% trans "Next section" %}"
         >
 		{% endif %}
 	</form></div>

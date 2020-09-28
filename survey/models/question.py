@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
+import random
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -80,7 +81,8 @@ class Question(models.Model):
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE, verbose_name=_("Survey"), related_name="questions")
     type = models.CharField(_("Type"), max_length=200, choices=QUESTION_TYPES, default=TEXT)
     choices = models.TextField(_("Choices"), blank=True, null=True, help_text=CHOICES_HELP_TEXT)
-
+    randomise = models.BooleanField(_("Random choice order"))
+    
     class Meta:
         verbose_name = _("question")
         verbose_name_plural = _("questions")
@@ -376,9 +378,11 @@ class Question(models.Model):
         choices_list = []
         for choice in self.get_clean_choices():
             choices_list.append((slugify(choice, allow_unicode=True), choice))
+        if self.randomise:
+            random.shuffle(choices_list)
         choices_tuple = tuple(choices_list)
         return choices_tuple
-
+    
     def __str__(self):
         msg = "Question '{}' ".format(self.text)
         if self.required:
