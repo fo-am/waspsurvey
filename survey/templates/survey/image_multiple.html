@@ -1,0 +1,61 @@
+{% load bootstrap %}
+{% load static %}
+
+<table class="table table-hover">
+    <!--<thead>
+      <tr>
+        <th> Question  </th>
+        <th> Answers </th>
+      </tr>
+    </thead> -->
+    <tbody>
+      
+      
+      {% for form in response_form %}
+	{% if form.field.widget.attrs.category == category.name or not form.field.widget.attrs.category %}
+        <tr class="{% if form.errors%} danger {% endif %}">
+            <td>
+	            {{ form.label|safe }}
+	            {% if form.field.required %}
+	                <span class="glyphicon glyphicon-asterisk" style="color:red"> </span>
+	            {% endif %}
+	            <span class="help-inline" style="color:red">
+	                <strong> {% for error in  form.errors %}{{ error }}{% endfor %} </strong>
+	            </span> <br>
+                {% if form.field.widget.input_type == 'select' %}
+                <select name="{{form.name}}"{% if form.field.widget.attrs.disabled %} disabled{% endif %}>
+                {% endif %}
+	        {% for field in form %}
+
+		<h2>{{ field.id_for_label }}</h2>
+		<!-- {{ field.data }} -->
+		<img src="/static/images/{{ field.data.label }}">
+
+
+<!--		<pre> {% filter force_escape %} {% debug field %} {% endfilter %} </pre> -->
+
+<!--		{{ field.name }}
+		
+		<input type="radio"
+		       name="{{ form.name.name }}"
+		       id="{{ form.name.id_for_label }}"
+		       {% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %}
+		       maxlength="{{ form.name.field.max_length }}"
+		       {% if form.name.field.required %}required{% endif %}>
+		<label for="{{ form.name.id_for_label }}">
+		  {{ form.name.field.label }}
+		</label>
+    -->            
+{{ field }}
+
+
+                {% endfor%}
+                {% if form.field.widget.input_type == 'select' %}
+                </select>
+                {% endif %}
+            </td>
+        </tr>
+	{% endif %}
+{% endfor %}
+    </tbody>
+</table>

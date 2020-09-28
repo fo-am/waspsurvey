@@ -1,0 +1,11 @@
+source .venv/bin/activate
+
+pip install -r requirements.txt
+
+(installed, to incl dependancies, then moved survey from lib to project for editing)
+
+added to activate to get django-admin working -> 
+
+export PYTHONPATH="/home/dave/code/waspsurvey:$PYTHONPATH"
+export DJANGO_SETTINGS_MODULE=waspsurvey.settings
+

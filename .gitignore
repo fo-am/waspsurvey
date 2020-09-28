@@ -1,0 +1,8 @@
+.venv
+static/images
+db.sqlite3
+*.*~
+*.pyc
+settings.py
+tex
+
