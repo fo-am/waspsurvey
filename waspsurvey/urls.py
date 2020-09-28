@@ -18,6 +18,10 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls import url
 
+admin.site.site_header = "Wasp Survey Admin"
+admin.site.site_title = "Wasp Survey Admin Portal"
+admin.site.index_title = "Wasp Survey Admin"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]

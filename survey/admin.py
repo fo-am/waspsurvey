@@ -6,13 +6,16 @@ from survey.actions import make_published
 from survey.exporter.csv import Survey2Csv
 from survey.exporter.tex import Survey2Tex
 from survey.models import Answer, Category, Question, Response, Survey, Image
-
+from django.forms import TextInput, Textarea
+from django.db import models
 
 class QuestionInline(admin.TabularInline):
     model = Question
     ordering = ("order", "category")
     extra = 1
-
+    formfield_overrides = {        
+        models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':20})},
+    }
 
 class CategoryInline(admin.TabularInline):
     model = Category
