@@ -2,6 +2,7 @@
 
 import logging
 import uuid
+import random
 
 from django import forms
 from django.conf import settings
@@ -74,6 +75,25 @@ class ResponseForm(models.ModelForm):
             for name in self.fields.keys():
                 self.fields[name].widget.attrs["disabled"] = True
 
+
+    def shuffle_order_questions(self,seed,qset):
+        arr = [x for x in list(qset)] 
+        t = {}
+        for i in arr:
+            order = i.order
+            if order in t:
+                t[order].append(i)
+            else:
+                t[order]=[i]
+
+        out = []
+        random.seed(seed)
+        for a in t:
+            random.shuffle(t[a])
+            out+=t[a]
+        random.seed()
+        return out
+
     def add_questions(self, data):
         # add a field for each survey question, corresponding to the question
         # type as appropriate.
@@ -84,6 +104,8 @@ class ResponseForm(models.ModelForm):
             else:
                 qs_for_step = self.survey.questions.filter(category=self.categories[self.step])
 
+            qs_for_step = self.shuffle_order_questions(self.seed,qs_for_step)
+        
             for question in qs_for_step:
                 self.add_question(question, data)
         else:
