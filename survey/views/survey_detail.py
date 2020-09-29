@@ -40,6 +40,10 @@ class SurveyDetail(View):
         
         categories = form.current_categories()
 
+#        text -> Question -> 
+#        uuid -> Response -> Answer -> body 
+#        print(Answer.filter(question=
+        
         asset_context = {
             # If any of the widgets of the current form has a "date" class, flatpickr will be loaded into the template
             "flatpickr": any([field.widget.attrs.get("class") == "date" for _, field in form.fields.items()])

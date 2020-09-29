@@ -1,0 +1,63 @@
+{% load bootstrap %}
+
+<table class="table table-hover">
+    <!--<thead>
+      <tr>
+        <th> Question  </th>
+        <th> Answers </th>
+      </tr>
+    </thead> -->
+    <tbody>
+      {% for form in response_form %}
+      {% if form.field.widget.attrs.category == category.name or not form.field.widget.attrs.category %}
+      <tr class="{% if form.errors%} danger {% endif %}">
+        <td>	  
+	  {% if form.field.required %}
+	  <span class="glyphicon glyphicon-asterisk" style="color:red"> </span>
+	  {% endif %}
+	  <span class="help-inline" style="color:red">
+	    <strong> {% for error in  form.errors %}{{ error }}{% endfor %} </strong>
+	  </span> <br>
+          {% if form.field.widget.input_type == 'select' %}
+          <select name="{{form.name}}"{% if form.field.widget.attrs.disabled %} disabled{% endif %}>
+            {% endif %}		
+	    {% for field in form %}
+
+	    {% if field.data.type == 'number' %}	    
+	  <div class="text-center">
+	    <img src="/static/images/{{ form.label|safe }}">
+	  </div>
+
+	  <div class="feelcontainer">
+	    <div class="feelface"><img src="/static/images/happy.png"></div>
+	    <div class="feelface"><img src="/static/images/happy.png"></div>
+	    <div class="feelface"><img src="/static/images/happy.png"></div>
+	    <div class="feelface"><img src="/static/images/happy.png"></div>
+	    <div class="feelface"><img src="/static/images/happy.png"></div>
+	    <div class="feelstretch"/>
+	  </div>
+	  <div class="slidecontainer">
+	    <input id="feelslider-{{ field.data.attrs.id }}" class="slider" type="range" min="1" max="100" value="50">
+	  </div>
+	  
+	  <script>
+	    document.addEventListener("DOMContentLoaded", function(event) { 
+	    link_slider("feelslider-{{ field.data.attrs.id }}","{{ field.data.attrs.id }}");
+	    });	    
+	  </script>
+	  {% else %}
+	  {{ form.label|safe }}<br>
+	  {% endif %}
+	  {{ field }}
+
+            {% endfor%}
+            {% if form.field.widget.input_type == 'select' %}
+          </select>
+          {% endif %}
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+</table>
+

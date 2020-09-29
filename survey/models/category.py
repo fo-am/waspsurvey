@@ -11,10 +11,12 @@ class Category(models.Model):
 
     DEFAULT="default"
     IMAGE_SELECT_MULTIPLE="image select multiple"
+    IMAGE_FEEL="image feel"
 
     TEMPLATE_TYPES = (
         (DEFAULT, _("Default")),
-        (IMAGE_SELECT_MULTIPLE, _("Image select multiple"))
+        (IMAGE_SELECT_MULTIPLE, _("Image select multiple")),
+        (IMAGE_FEEL, _("Image feel"))
     )
 
     name = models.CharField(_("Name"), max_length=400)
