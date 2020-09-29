@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 
+import random
 from django.conf import settings
 from django.shortcuts import redirect, render, reverse
 from django.views.generic import View
@@ -12,6 +13,8 @@ LOGGER = logging.getLogger(__name__)
 
 
 class SurveyDetail(View):
+    
+
     @survey_available
     def get(self, request, *args, **kwargs):
         survey = kwargs.get("survey")
@@ -26,7 +29,15 @@ class SurveyDetail(View):
         if survey.need_logged_user and not request.user.is_authenticated:
             return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
 
-        form = ResponseForm(survey=survey, user=request.user, step=step)
+        # create a random number to use for ordering for this session only
+        if step==0 or "random" not in request.session:
+            request.session["random"] = random.randrange(0,100000)
+
+        form = ResponseForm(survey=survey,
+                            user=request.user,
+                            step=step,
+                            seed=request.session["random"])
+        
         categories = form.current_categories()
 
         asset_context = {
@@ -48,7 +59,7 @@ class SurveyDetail(View):
         survey = kwargs.get("survey")
         if survey.need_logged_user and not request.user.is_authenticated:
             return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
-
+        
         form = ResponseForm(request.POST, survey=survey, user=request.user, step=kwargs.get("step", 0))
         categories = form.current_categories()
 

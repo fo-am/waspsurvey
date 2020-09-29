@@ -45,13 +45,17 @@ class ResponseForm(models.ModelForm):
         self.survey = kwargs.pop("survey")
         self.user = kwargs.pop("user")
         try:
+            self.seed = kwargs.pop("seed")
+        except KeyError:
+            self.seed = 0
+        try:
             self.step = int(kwargs.pop("step"))
         except KeyError:
             self.step = None
         super(ResponseForm, self).__init__(*args, **kwargs)
         self.uuid = uuid.uuid4().hex
 
-        self.categories = self.survey.non_empty_categories()
+        self.categories = self.survey.non_empty_categories(self.seed)
         self.qs_with_no_cat = self.survey.questions.filter(category__isnull=True).order_by("order", "id")
 
         if self.survey.display_method == Survey.BY_CATEGORY:
@@ -245,7 +249,7 @@ class ResponseForm(models.ModelForm):
 
         if question.type == Question.DATE:
             field.widget.attrs["class"] = "date"
-        print("Field for %s : %s", question, field.__dict__)
+        #print("Field for %s : %s", question, field.__dict__)
         self.fields["question_%d" % question.pk] = field
 
     def has_next_step(self):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
-
+import random
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -60,8 +60,27 @@ class Survey(models.Model):
     def get_absolute_url(self):
         return reverse("survey-detail", kwargs={"id": self.pk})
 
-    def non_empty_categories(self):
-        return [x for x in list(self.categories.order_by("order", "id")) if x.questions.count() > 0]
 
+    def shuffle_order_categories(self,seed,arr):
+        t = {}
+        for i in arr:
+            order = i.order
+            if order in t:
+                t[order].append(i)
+            else:
+                t[order]=[i]
+
+        out = []
+        random.seed(seed)
+        for a in t:
+            random.shuffle(t[a])
+            out+=t[a]
+        random.seed()
+        return out
+
+    def non_empty_categories(self,seed):        
+        cats = [x for x in list(self.categories.order_by("order", "id")) if x.questions.count() > 0] 
+        return self.shuffle_order_categories(seed,cats)
+        
     def is_all_in_one_page(self):
         return self.display_method == self.ALL_IN_ONE_PAGE
