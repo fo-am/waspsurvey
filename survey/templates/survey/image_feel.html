@@ -23,6 +23,7 @@
             {% endif %}		
 	    {% for field in form %}
 
+	    <!-- convert all number fields into slider thingys -->
 	    {% if field.data.type == 'number' %}	    
 	  <div class="text-center">
 	    <img src="/static/images/{{ form.label|safe }}">
@@ -46,12 +47,14 @@
 	    });	    
 	  </script>
 	  {% else %}
+
+	  <!-- not a number... -->
 	  {{ form.label|safe }}<br>
 	  {% endif %}
 	  {{ field }}
-
-            {% endfor%}
-            {% if form.field.widget.input_type == 'select' %}
+	  
+          {% endfor%}
+          {% if form.field.widget.input_type == 'select' %}
           </select>
           {% endif %}
         </td>
