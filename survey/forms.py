@@ -29,6 +29,7 @@ class ResponseForm(models.ModelForm):
         Question.SELECT_INSECT: forms.CharField,
         Question.IMAGE_FEEL: forms.IntegerField,
         Question.TEXT_FEEL: forms.IntegerField,
+        Question.NAME_INSECT: forms.CharField,
     }
 
     WIDGETS = {
@@ -234,12 +235,20 @@ class ResponseForm(models.ModelForm):
         :param Question question: The question
         :rtype: List of String or None """
         qchoices = None
-        if question.type not in [Question.TEXT, Question.SHORT_TEXT, Question.INTEGER, Question.FLOAT, Question.DATE, Question.SELECT_INSECT]:
+        if question.type not in [Question.TEXT,
+                                 Question.SHORT_TEXT,
+                                 Question.INTEGER,
+                                 Question.FLOAT,
+                                 Question.DATE,
+                                 Question.SELECT_INSECT,
+                                 Question.IMAGE_FEEL,
+                                 Question.TEXT_FEEL,
+                                 Question.NAME_INSECT]:
             qchoices = question.get_choices()
             # add an empty option at the top so that the user has to explicitly
             # select one of the options
             if question.type in [Question.SELECT, Question.SELECT_IMAGE]:
-                qchoices = tuple([("", "-------------")]) + qchoices
+                qchoices = tuple([("", "")]) + qchoices
         return qchoices
 
     def get_question_field(self, question, **kwargs):

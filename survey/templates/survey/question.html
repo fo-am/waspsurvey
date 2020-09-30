@@ -30,6 +30,8 @@
 	    {% include "survey/fragment_image_feel.html" %}
 	    {% elif field.data.attrs.type == 'text-feel' %}	    
 	    {% include "survey/fragment_text_feel.html" %}
+	    {% elif field.data.attrs.type == 'name-insect' %}	    
+	    {% include "survey/fragment_insect_name.html" %}
 	    {% endif %}
 	    
             {{ field }}

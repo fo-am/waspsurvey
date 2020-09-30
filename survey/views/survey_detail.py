@@ -40,22 +40,34 @@ class SurveyDetail(View):
         
         categories = form.current_categories()
 
+        # get insects by location
         insects = []
         location = ""
         try:
-            q=Question.objects.get(code=Question.WASP_LOCATION)            
+            q=Question.objects.get(code=Question.USER_LOCATION)            
             session_key = "survey_%s" % (kwargs["id"],)
             if session_key in request.session:
-                print(request.session[session_key])
                 question_id = "question_"+str(q.id)
                 if question_id in request.session[session_key]:
                     location = request.session[session_key][question_id]                
                     insects = Insect.objects.filter(location=location)
         except Question.DoesNotExist:
             location="no location question"
-        except Answer.DoesNotExist:
-            location="location question not anwered yet"        
 
+        #  load known insects if they have been recorded yet
+        known_insects = []
+        try:
+            q=Question.objects.get(code=Question.WASPS_KNOWN)            
+            session_key = "survey_%s" % (kwargs["id"],)
+            if session_key in request.session:
+                question_id = "question_"+str(q.id)
+                if question_id in request.session[session_key]:
+                    i = request.session[session_key][question_id]                    
+                    known_insects = Insect.objects.filter(name__in=i.split(","))
+        except Question.DoesNotExist:
+            pass
+
+            
         asset_context = {
             # If any of the widgets of the current form has a "date" class, flatpickr will be loaded into the template
             "flatpickr": any([field.widget.attrs.get("class") == "date" for _, field in form.fields.items()])
@@ -67,7 +79,8 @@ class SurveyDetail(View):
             "step": step,
             "asset_context": asset_context,
             "location": location,
-            "insects": insects
+            "insects": insects,
+            "known_insects": known_insects
         }
 
         return render(request, template_name, context)
