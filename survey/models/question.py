@@ -56,20 +56,35 @@ class Question(models.Model):
     SELECT = "select"
     SELECT_IMAGE = "select_image"
     SELECT_MULTIPLE = "select-multiple"
+    SELECT_INSECT = "select-insect"
+    IMAGE_FEEL = "image-feel"
+    TEXT_FEEL = "text-feel"
     INTEGER = "integer"
     FLOAT = "float"
     DATE = "date"
 
     QUESTION_TYPES = (
-        (TEXT, _("text (multiple line)")),
-        (SHORT_TEXT, _("short text (one line)")),
-        (RADIO, _("radio")),
-        (SELECT, _("select")),
+        (TEXT, _("Text (multiple line)")),
+        (SHORT_TEXT, _("Short text (one line)")),
+        (RADIO, _("Radio buttons")),
+        (SELECT, _("Select list")),
         (SELECT_MULTIPLE, _("Select Multiple")),
-       # (SELECT_IMAGE, _("Select Image")),
-        (INTEGER, _("integer")),
-        (FLOAT, _("float")),
-        (DATE, _("date")),
+        (INTEGER, _("Integer")),
+        (FLOAT, _("Float")),
+        (DATE, _("Date")),
+        (SELECT_INSECT, _("Select insect")),
+        (IMAGE_FEEL, _("Image feel")),
+        (TEXT_FEEL, _("Text feel")),
+    )
+
+    DEFAULT = "default"
+    WASP_LOCATION = "wasp location"
+    WASP_SELECTION = "wasp selection"
+
+    QUESTION_CODES = (
+        (DEFAULT, _("Default")),
+        (WASP_LOCATION, _("Wasp location question")),
+        (WASP_SELECTION, _("Know wasp selection question"))
     )
     
     text = models.TextField(_("Text"))
@@ -82,6 +97,7 @@ class Question(models.Model):
     type = models.CharField(_("Type"), max_length=200, choices=QUESTION_TYPES, default=TEXT)
     choices = models.TextField(_("Choices"), blank=True, null=True, help_text=CHOICES_HELP_TEXT)
     randomise = models.BooleanField(_("Random choice order"))
+    code = models.CharField(_("Code"), max_length=200, choices=QUESTION_CODES, default=DEFAULT)
     
     class Meta:
         verbose_name = _("question")

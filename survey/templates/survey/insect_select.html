@@ -25,24 +25,32 @@
                 {% if form.field.widget.input_type == 'select' %}
                 <select name="{{form.name}}"{% if form.field.widget.attrs.disabled %} disabled{% endif %}>
                 {% endif %}
-
-		{{ insects }}
-
-		{% for field in form %}
-
 		
-		<label class="image-label" for="{{ field.id_for_label }}">
+		{% for field in form %}
+		{% if field.data.attrs.type == 'select-insect' %}	    
 
-		  
+		{{ field.data }}
+		
+		{% for insect in insects %}
+
+		<label class="image-label" for="insect-{{ insect.id }}">		  
 		  <input type="checkbox"
 			 class="image-checkbox"
-			 name="{{field.data.name}}"
-			 value="{{field.data.value}}"
-			 category="{{field.data.category}}"
-			 id="{{ field.id_for_label }}">
-		  <img src="/static/images/{{ field.data.label }}">
+			 name="insect-{{ insect.id }}"
+			 value="insect-{{ insect.id }}"			
+			 id="insect-{{ insect.id }}">
+		  <img src="/{{ insect.photo }}">
+		  <script>
+		    document.addEventListener("DOMContentLoaded", function(event) { 
+		    link_insect_selector("insect-{{ insect.id }}","{{ field.data.attrs.id }}");
+		    });
+		  </script>
 		</label>
+
+		{% endfor %}
+		{% endif %}
 		
+		{{ field }}
                 {% endfor%}
                 {% if form.field.widget.input_type == 'select' %}
                 </select>

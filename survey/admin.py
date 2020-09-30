@@ -5,7 +5,7 @@ from django.contrib import admin
 from survey.actions import make_published
 from survey.exporter.csv import Survey2Csv
 from survey.exporter.tex import Survey2Tex
-from survey.models import Answer, Category, Question, Response, Survey, Image
+from survey.models import Answer, Category, Question, Response, Survey, Image, Insect
 from django.forms import TextInput, Textarea
 from django.db import models
 from django.utils.html import format_html
@@ -53,8 +53,17 @@ class ImageAdmin(admin.ModelAdmin):
     image_tag.short_description = 'Image'
     list_display = ['image_tag',]
 
+class InsectAdmin(admin.ModelAdmin):
+
+    def image_tag(self, obj):
+        return format_html('<img src="/{}" />'.format(obj.photo))
+
+    image_tag.short_description = 'Insect'
+    list_display = ['image_tag',]
+
 #admin.site.register(Question, QuestionInline)
 admin.site.register(Category)
 admin.site.register(Image, ImageAdmin)
+admin.site.register(Insect, InsectAdmin)
 admin.site.register(Survey, SurveyAdmin)
 admin.site.register(Response, ResponseAdmin)

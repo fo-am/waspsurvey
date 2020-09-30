@@ -8,22 +8,10 @@ from .survey import Survey
 
 
 class Category(models.Model):
-
-    DEFAULT="default"
-    IMAGE_SELECT_MULTIPLE="image select multiple"
-    IMAGE_FEEL="image feel"
-
-    TEMPLATE_TYPES = (
-        (DEFAULT, _("Default")),
-        (IMAGE_SELECT_MULTIPLE, _("Image select multiple")),
-        (IMAGE_FEEL, _("Image feel"))
-    )
-
     name = models.CharField(_("Name"), max_length=400)
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE, verbose_name=_("Survey"), related_name="categories")
     order = models.IntegerField(_("Display order"), blank=True, null=True)
     description = models.CharField(_("Description"), max_length=2000, blank=True, null=True)
-    template = models.CharField(_("Template"), max_length=200, choices=TEMPLATE_TYPES, default=DEFAULT)
 
     class Meta:
         # pylint: disable=too-few-public-methods

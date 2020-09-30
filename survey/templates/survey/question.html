@@ -23,6 +23,15 @@
           <select name="{{form.name}}"{% if form.field.widget.attrs.disabled %} disabled{% endif %}>
             {% endif %}		
 	    {% for field in form %}
+
+	    {% if field.data.attrs.type == 'select-insect' %}	    
+	    {% include "survey/fragment_insect_select.html" %}
+	    {% elif field.data.attrs.type == 'image-feel' %}	    
+	    {% include "survey/fragment_image_feel.html" %}
+	    {% elif field.data.attrs.type == 'text-feel' %}	    
+	    {% include "survey/fragment_text_feel.html" %}
+	    {% endif %}
+	    
             {{ field }}
             {% endfor%}
             {% if form.field.widget.input_type == 'select' %}

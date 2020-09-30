@@ -9,12 +9,12 @@ from django.views.generic import View
 from survey.decorators import survey_available
 from survey.forms import ResponseForm
 
-LOGGER = logging.getLogger(__name__)
+from survey.models import Question, Answer, Insect
 
+LOGGER = logging.getLogger(__name__)
 
 class SurveyDetail(View):
     
-
     @survey_available
     def get(self, request, *args, **kwargs):
         survey = kwargs.get("survey")
@@ -40,10 +40,22 @@ class SurveyDetail(View):
         
         categories = form.current_categories()
 
-#        text -> Question -> 
-#        uuid -> Response -> Answer -> body 
-#        print(Answer.filter(question=
-        
+        insects = []
+        location = ""
+        try:
+            q=Question.objects.get(code=Question.WASP_LOCATION)            
+            session_key = "survey_%s" % (kwargs["id"],)
+            if session_key in request.session:
+                print(request.session[session_key])
+                question_id = "question_"+str(q.id)
+                if question_id in request.session[session_key]:
+                    location = request.session[session_key][question_id]                
+                    insects = Insect.objects.filter(location=location)
+        except Question.DoesNotExist:
+            location="no location question"
+        except Answer.DoesNotExist:
+            location="location question not anwered yet"        
+
         asset_context = {
             # If any of the widgets of the current form has a "date" class, flatpickr will be loaded into the template
             "flatpickr": any([field.widget.attrs.get("class") == "date" for _, field in form.fields.items()])
@@ -54,6 +66,8 @@ class SurveyDetail(View):
             "categories": categories,
             "step": step,
             "asset_context": asset_context,
+            "location": location,
+            "insects": insects
         }
 
         return render(request, template_name, context)
@@ -63,7 +77,7 @@ class SurveyDetail(View):
         survey = kwargs.get("survey")
         if survey.need_logged_user and not request.user.is_authenticated:
             return redirect("%s?next=%s" % (settings.LOGIN_URL, request.path))
-        
+
         form = ResponseForm(request.POST, survey=survey, user=request.user, step=kwargs.get("step", 0))
         categories = form.current_categories()
 

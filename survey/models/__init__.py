@@ -10,5 +10,6 @@ from .question import Question
 from .response import Response
 from .survey import Survey
 from .image import Image
+from .insect import Insect
 
-__all__ = ["Category", "Answer", "Category", "Response", "Survey", "Question", "Image"]
+__all__ = ["Category", "Answer", "Category", "Response", "Survey", "Question", "Image", "Insect"]

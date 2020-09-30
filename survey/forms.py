@@ -26,6 +26,9 @@ class ResponseForm(models.ModelForm):
         Question.INTEGER: forms.IntegerField,
         Question.FLOAT: forms.FloatField,
         Question.DATE: forms.DateField,
+        Question.SELECT_INSECT: forms.CharField,
+        Question.IMAGE_FEEL: forms.IntegerField,
+        Question.TEXT_FEEL: forms.IntegerField,
     }
 
     WIDGETS = {
@@ -35,6 +38,7 @@ class ResponseForm(models.ModelForm):
         Question.SELECT: forms.Select,
         Question.SELECT_IMAGE: ImageSelectWidget,
         Question.SELECT_MULTIPLE: forms.CheckboxSelectMultiple,
+        Question.SELECT_INSECT: forms.TextInput,
     }
 
     class Meta:
@@ -68,7 +72,7 @@ class ResponseForm(models.ModelForm):
         self.answers = False
 
         self.add_questions(kwargs.get("data"))
-
+        
         self._get_preexisting_response()
 
         if not self.survey.editable_answers and self.response is not None:
@@ -230,7 +234,7 @@ class ResponseForm(models.ModelForm):
         :param Question question: The question
         :rtype: List of String or None """
         qchoices = None
-        if question.type not in [Question.TEXT, Question.SHORT_TEXT, Question.INTEGER, Question.FLOAT, Question.DATE]:
+        if question.type not in [Question.TEXT, Question.SHORT_TEXT, Question.INTEGER, Question.FLOAT, Question.DATE, Question.SELECT_INSECT]:
             qchoices = question.get_choices()
             # add an empty option at the top so that the user has to explicitly
             # select one of the options
@@ -268,7 +272,8 @@ class ResponseForm(models.ModelForm):
             kwargs["widget"] = widget
         field = self.get_question_field(question, **kwargs)
         field.widget.attrs["category"] = question.category.name if question.category else ""
-
+        field.widget.attrs["type"] = question.type
+        
         if question.type == Question.DATE:
             field.widget.attrs["class"] = "date"
         #print("Field for %s : %s", question, field.__dict__)

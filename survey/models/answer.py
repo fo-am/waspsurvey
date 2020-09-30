@@ -32,6 +32,7 @@ class Answer(models.Model):
         except KeyError:
             question = kwargs.get("question")
         body = kwargs.get("body")
+        print("answer made for: ",body)
         if question and body:
             self.check_answer_body(question, body)
         super(Answer, self).__init__(*args, **kwargs)
