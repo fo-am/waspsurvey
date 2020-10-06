@@ -27,7 +27,7 @@ class ResponseForm(models.ModelForm):
         Question.FLOAT: forms.FloatField,
         Question.DATE: forms.DateField,
         Question.SELECT_INSECT: forms.CharField,
-        Question.IMAGE_FEEL: forms.IntegerField,
+        Question.INSECT_FEEL: forms.IntegerField,
         Question.TEXT_FEEL: forms.IntegerField,
         Question.NAME_INSECT: forms.CharField,
     }
@@ -241,7 +241,7 @@ class ResponseForm(models.ModelForm):
                                  Question.FLOAT,
                                  Question.DATE,
                                  Question.SELECT_INSECT,
-                                 Question.IMAGE_FEEL,
+                                 Question.INSECT_FEEL,
                                  Question.TEXT_FEEL,
                                  Question.NAME_INSECT]:
             qchoices = question.get_choices()
@@ -253,7 +253,6 @@ class ResponseForm(models.ModelForm):
 
     def get_question_field(self, question, **kwargs):
         """ Return the field we should use in our form.
-
         :param Question question: The question
         :param **kwargs: A dict of parameter properly initialized in
             add_question.
@@ -282,6 +281,7 @@ class ResponseForm(models.ModelForm):
         field = self.get_question_field(question, **kwargs)
         field.widget.attrs["category"] = question.category.name if question.category else ""
         field.widget.attrs["type"] = question.type
+        field.widget.attrs["code"] = question.code
         
         if question.type == Question.DATE:
             field.widget.attrs["class"] = "date"

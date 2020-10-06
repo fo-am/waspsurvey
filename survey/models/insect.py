@@ -8,5 +8,5 @@ from .question import Question
 class Insect(models.Model):
     name = models.CharField(_("ID name"), max_length=200 )
     photo = models.ImageField(upload_to='static/image_uploads')
-    location = models.TextField(_("Location"), blank=True, null=True)
+    location = models.CharField(_("Location"), blank=True, null=True, max_length=200 )
     

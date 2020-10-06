@@ -60,7 +60,7 @@ class Question(models.Model):
     FLOAT = "float"
     DATE = "date"
     SELECT_INSECT = "select-insect"
-    IMAGE_FEEL = "image-feel"
+    INSECT_FEEL = "insect-feel"
     TEXT_FEEL = "text-feel"
     NAME_INSECT = "name-insect"
     
@@ -74,22 +74,24 @@ class Question(models.Model):
         (FLOAT, _("Float")),
         (DATE, _("Date")),
         (SELECT_INSECT, _("Select insect")),
-        (IMAGE_FEEL, _("Image feel")),
+        (INSECT_FEEL, _("Insect feel")),
         (TEXT_FEEL, _("Text feel")),
         (NAME_INSECT, _("Name insect")),
     )
 
     DEFAULT = "default"
-    USER_LOCATION = "wasp location"
-    WASPS_KNOWN = "wasps known"
-
+    USER_LOCATION = "wasp-location"
+    WASPS_KNOWN = "wasps-known"
+    WASP_ID = "wasp-id"
+    
     QUESTION_CODES = (
         (DEFAULT, _("None")),
         (USER_LOCATION, _("User location")),
-        (WASPS_KNOWN, _("Known wasps"))
+        (WASPS_KNOWN, _("Known wasps")),
+        (WASP_ID, _("Wasp ID field (hidden)")),
     )
     
-    text = models.TextField(_("Text"))
+    text = models.TextField(_("Text"), blank=True)
     order = models.IntegerField(_("Order"))
     required = models.BooleanField(_("Required"))
     category = models.ForeignKey(

@@ -1,5 +1,6 @@
 {% for insect in known_insects %}
 
+<div style="float:left; margin: 1em;">
 <img src="/{{ insect.photo }}"><br>
 <input type="text"
        name="{{ insect.name }}"
@@ -10,5 +11,6 @@
   link_insect_name("{{ insect.name }}","{{ field.data.attrs.id }}");
   });
 </script>
+</div>
 
 {% endfor %}

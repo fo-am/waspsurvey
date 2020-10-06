@@ -67,7 +67,27 @@ class SurveyDetail(View):
         except Question.DoesNotExist:
             pass
 
+
+        wasp_id = 0
+        # check the current categories for a wasp ID
+        for cat in categories:
+            if cat.wasp_index>0:
+                wasp_id=cat.wasp_index-1
             
+        wasp = 0
+        wasp_id_field = "none"
+        for qname,field in form.fields.items():        
+            if field.widget.attrs["code"]=="wasp-id":
+                try:
+                    wasp_id_field = "id_"+qname
+                    wasp = insects[wasp_id]
+                except IndexError:
+                    # maybe could check here and skip/incr step??
+                    print(field.label+" out of bounds for current insects")
+                except ValueError:
+                    print(field.label+" does not look like an int")
+            
+        
         asset_context = {
             # If any of the widgets of the current form has a "date" class, flatpickr will be loaded into the template
             "flatpickr": any([field.widget.attrs.get("class") == "date" for _, field in form.fields.items()])
@@ -80,7 +100,9 @@ class SurveyDetail(View):
             "asset_context": asset_context,
             "location": location,
             "insects": insects,
-            "known_insects": known_insects
+            "known_insects": known_insects,
+            "wasp": wasp,
+            "wasp_id_field": wasp_id_field
         }
 
         return render(request, template_name, context)

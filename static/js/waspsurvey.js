@@ -75,6 +75,8 @@ function link_slider(from,to) {
 
 
 function link_insect_selector(from,to) {
+    $("#"+to).val("");
+    $("#"+to).hide();
     $("#"+from).on("change", function(event) {
 	var l = csv_to_list($("#"+to).val());
 
@@ -89,6 +91,8 @@ function link_insect_selector(from,to) {
 }
 
 function link_insect_name(from,to) {
+    $("#"+to).val("");
+    $("#"+to).hide();
     $("#"+from).on("change", function(event) {
 	var o = csv_to_object($("#"+to).val());
 	
@@ -96,6 +100,11 @@ function link_insect_name(from,to) {
 
 	$("#"+to).val(object_to_csv(o));
     }); 
+}
+
+function update_wasp_id(wasp_id,dest) {
+    $("#"+dest).hide();
+    $("#"+dest).val(wasp_id);
 }
 
 

@@ -1,6 +1,6 @@
 {% load bootstrap %}
 
-<table class="table table-hover">
+<table class="table table-hover table-striped">
     <!--<thead>
       <tr>
         <th> Question  </th>
@@ -10,9 +10,16 @@
     <tbody>
       {% for form in response_form %}
       {% if form.field.widget.attrs.category == category.name or not form.field.widget.attrs.category %}
+
+
+      <!-- hide wasp id fields -->
+      {% if form.field.widget.attrs.code != 'wasp-id' %}	    
       <tr class="{% if form.errors%} danger {% endif %}">
-        <td>
-	  {{ form.label|safe }}
+	<td>
+      {{ form.label|safe }}
+
+      {% endif %}
+      
 	  {% if form.field.required %}
 	  <span class="glyphicon glyphicon-asterisk" style="color:red"> </span>
 	  {% endif %}
@@ -26,8 +33,8 @@
 
 	    {% if field.data.attrs.type == 'select-insect' %}	    
 	    {% include "survey/fragment_insect_select.html" %}
-	    {% elif field.data.attrs.type == 'image-feel' %}	    
-	    {% include "survey/fragment_image_feel.html" %}
+	    {% elif field.data.attrs.type == 'insect-feel' %}	    
+	    {% include "survey/fragment_insect_feel.html" %}
 	    {% elif field.data.attrs.type == 'text-feel' %}	    
 	    {% include "survey/fragment_text_feel.html" %}
 	    {% elif field.data.attrs.type == 'name-insect' %}	    
@@ -39,8 +46,11 @@
             {% if form.field.widget.input_type == 'select' %}
           </select>
           {% endif %}
+      <!-- hide wasp id fields -->
+      {% if form.field.widget.attrs.code != 'wasp-id' %}	    
         </td>
       </tr>
+      {% endif %}
       {% endif %}
       {% endfor %}
     </tbody>
