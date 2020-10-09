@@ -49,8 +49,8 @@ class SurveyDetail(View):
             if session_key in request.session:
                 question_id = "question_"+str(q.id)
                 if question_id in request.session[session_key]:
-                    location = request.session[session_key][question_id]                
-                    insects = Insect.objects.filter(location=location)
+                    location = request.session[session_key][question_id]
+                    insects = Insect.objects.filter(location__icontains=location)
         except Question.DoesNotExist:
             location="no location question"
 
