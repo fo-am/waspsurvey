@@ -1,5 +1,5 @@
 .venv
-static/images
+static/image_uploads
 db.sqlite3
 *.*~
 *.pyc
