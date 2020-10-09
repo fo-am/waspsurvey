@@ -50,7 +50,8 @@ class SurveyDetail(View):
                 question_id = "question_"+str(q.id)
                 if question_id in request.session[session_key]:
                     location = request.session[session_key][question_id]
-                    insects = Insect.objects.filter(location__icontains=location)
+                    # need to get randomize from original question ideally
+                    insects = Insect.objects.filter(location__icontains=location).order_by('?')
         except Question.DoesNotExist:
             location="no location question"
 
@@ -63,7 +64,8 @@ class SurveyDetail(View):
                 question_id = "question_"+str(q.id)
                 if question_id in request.session[session_key]:
                     i = request.session[session_key][question_id]                    
-                    known_insects = Insect.objects.filter(name__in=i.split(","))
+                    # need to get randomize from original question ideally
+                    known_insects = Insect.objects.filter(name__in=i.split(",")).order_by('?')
         except Question.DoesNotExist:
             pass
 
