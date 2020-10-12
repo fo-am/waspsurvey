@@ -1,57 +1,49 @@
 {% load bootstrap %}
 
-<table class="table table-hover table-striped">
-    <!--<thead>
-      <tr>
-        <th> Question  </th>
-        <th> Answers </th>
-      </tr>
-    </thead> -->
-    <tbody>
-      {% for form in response_form %}
-      {% if form.field.widget.attrs.category == category.name or not form.field.widget.attrs.category %}
+<div class="question-top">
+  {% for form in response_form %}
+  
+  {% if form.field.widget.attrs.category == category.name or not form.field.widget.attrs.category %}
 
-
-      <!-- hide wasp id fields -->
-      {% if form.field.widget.attrs.code != 'wasp-id' %}	    
-      <tr class="{% if form.errors%} danger {% endif %}">
-	<td>
+  <!-- hide wasp id fields -->
+  <div class="{% if form.errors%} danger {% endif %} question">
+    <div class="question-label">
       {{ form.label|safe }}
+      {% if form.field.required %}
+      <span class="glyphicon glyphicon-asterisk" style="color: #f8d10f;"> </span>
+      {% endif %}
+    </div>
+    
+    <span class="help-inline" style="color: #f8d10f;">
+      <strong> {% for error in  form.errors %}{{ error }}{% endfor %} </strong>
+    </span> <br>
 
+    <div class="question-fields">      
+      {% if form.field.widget.input_type == 'select' %}
+      <select name="{{form.name}}"{% if form.field.widget.attrs.disabled %} disabled{% endif %}>
+        {% endif %}
+	
+	{% for field in form %}
+        {{ field }}
+        {% endfor %}
+
+        {% if form.field.widget.input_type == 'select' %}
+      </select>
       {% endif %}
       
-	  {% if form.field.required %}
-	  <span class="glyphicon glyphicon-asterisk" style="color:red"> </span>
-	  {% endif %}
-	  <span class="help-inline" style="color:red">
-	    <strong> {% for error in  form.errors %}{{ error }}{% endfor %} </strong>
-	  </span> <br>
-          {% if form.field.widget.input_type == 'select' %}
-          <select name="{{form.name}}"{% if form.field.widget.attrs.disabled %} disabled{% endif %}>
-            {% endif %}		
-	    {% for field in form %}
-
-	    {% if field.data.attrs.type == 'select-insect' %}	    
-	    {% include "survey/fragment_insect_select.html" %}
-	    {% elif field.data.attrs.type == 'insect-feel' %}	    
-	    {% include "survey/fragment_insect_feel.html" %}
-	    {% elif field.data.attrs.type == 'text-feel' %}	    
-	    {% include "survey/fragment_text_feel.html" %}
-	    {% elif field.data.attrs.type == 'name-insect' %}	    
-	    {% include "survey/fragment_insect_name.html" %}
-	    {% endif %}
-	    
-            {{ field }}
-            {% endfor%}
-            {% if form.field.widget.input_type == 'select' %}
-          </select>
-          {% endif %}
-      <!-- hide wasp id fields -->
-      {% if form.field.widget.attrs.code != 'wasp-id' %}	    
-        </td>
-      </tr>
+      {% if form.field.widget.attrs.type == 'select-insect' %}	    
+      {% include "survey/fragment_insect_select.html" %}      
+      {% elif form.field.widget.attrs.type == 'insect-feel' %}	    
+      {% include "survey/fragment_insect_feel.html" %}
+      {% elif form.field.widget.attrs.type == 'text-feel' %}	    
+      {% include "survey/fragment_text_feel.html" %}
+      {% elif form.field.widget.attrs.type == 'name-insect' %}	    
+      {% include "survey/fragment_insect_name.html" %}
       {% endif %}
-      {% endif %}
-      {% endfor %}
-    </tbody>
-</table>
+      
+    </div> <!-- question-fields -->
+    
+  </div> <!-- question -->
+  {% endif %} <!-- category check -->
+  {% endfor %} <!-- form --> 
+</div> <!-- question-top -->

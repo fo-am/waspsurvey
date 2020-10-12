@@ -66,6 +66,7 @@ function object_remove(o,k) {
 /////////////////////////////////////////////////////
 
 function link_slider(from,to) {
+    console.log(to);
     $("#"+to).hide();
     $("#"+from).on("change", function(event) {
 	console.log(event.target.value);
@@ -75,6 +76,7 @@ function link_slider(from,to) {
 
 
 function link_insect_selector(from,to) {
+    console.log(to);
     $("#"+to).val("");
     $("#"+to).hide();
     $("#"+from).on("change", function(event) {

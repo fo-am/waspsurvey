@@ -1,16 +1,19 @@
 {% for insect in known_insects %}
 
-<div style="float:left; margin: 1em;">
+<div style="float:left; margin-right: 1em; margin-bottom: 1em;">
 <img src="/{{ insect.photo }}"><br>
 <input type="text"
        name="{{ insect.name }}"
        value=""			
-       id="{{ insect.name }}"><br>
+       id="{{ insect.name }}"
+       style="width:12em;"><br>
 <script>
   document.addEventListener("DOMContentLoaded", function(event) { 
-  link_insect_name("{{ insect.name }}","{{ field.data.attrs.id }}");
+  link_insect_name("{{ insect.name }}","id_{{ form.name }}");
   });
 </script>
 </div>
 
 {% endfor %}
+
+
