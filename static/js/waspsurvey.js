@@ -65,8 +65,11 @@ function object_remove(o,k) {
 
 /////////////////////////////////////////////////////
 
+function push_slider(v,slider_id) {
+    $("#"+slider_id).val(v);
+}
+
 function link_slider(from,to) {
-    console.log(to);
     $("#"+to).hide();
     $("#"+from).on("change", function(event) {
 	console.log(event.target.value);

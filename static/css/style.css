@@ -1,20 +1,152 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 
+/* yellow: #f8d10f */
+/* green: #39b582 */
+
 body {
     font-family: 'Noto Serif', serif;
     font-size: 200%;
-    background: #c2ebff;
+    background: #39b582; 
 }
 
 
 h1, h2, h3 {
     text-align: center;
+    color: white;
 }
 
-select {
+select, input[type="number"], input[type="text"] {
     height: 2em;
     width: 10em;
+    border: none;
+/*    background: #f8d10f;   */
+    background: white; 
+}
+
+
+.button {
+  border: none;
+  color: white;
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 20px 50px;
+  border-radius: 3px;
+  margin:5px;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  transition: text-shadow 0.3s ease;
+}
+
+.button:active {
+  position: relative;
+  top: 1px;
+  border-bottom-width: 2px;
+}
+
+.button:hover {
+  text-shadow: 2px 2px 0px rgba(0,0,0,.3)
+}
+
+.form {
+  display: block;
+  width: 300px;
+  background-color: #F3EDD3;
+  padding:  0;
+  text-align: center;
+}
+
+.form .form-title {
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.form label {
+    color: black;    
+}
+
+label {
+    font-weight: normal;
+}
+
+.form input[type=text], .form input[type=password] {
+  display: block;
+}
+
+input[type=text], input[type=password] {
+  display: inline-block;
+  color: black;
+  padding: 10px;
+  width: 250px;
+  box-sizing: border-box;
+  background-color: white;
+  border: none;
+  border-radius: 2px;
+  margin: 10px auto;
+  transition:background-color 0.5s ease;
+}
+
+/*
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #f8d10f;
+}
+*/
+
+input[type=submit], input[type=button] {
+  color: white;
+  display: block;
+  width:100%;
+  margin-top:15px;
+  border: none;
+  padding: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+input[type="checkbox"], input[type="radio"]{
+	background: rgba(191,185,169,.2);
+	height: 16px;
+	cursor: pointer;
+	border-radius: 3px;
+	width:16px;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
+  vertical-align: middle;
+}
+
+input[type="radio"] {
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+  background: #f8d10f;
+  box-shadow: 0 1px 2px rgba(0,0,0,.44);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.44);
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.44);
+}
+
+::-webkit-input-placeholder {
+   color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+
+:-ms-input-placeholder {  
+   color: white;  
 }
 
 /*---------------------------------------------------*/
@@ -43,10 +175,14 @@ select {
     margin-bottom: 1em;
     padding: 1em;
     border-radius: 1em;
-    background: #39b582;
+/*    background: #39b582; */
+/*    border: 4px solid #39b582; */
+    background: #c2ebff;
+    box-shadow: 5px 5px 5px #199562;
 }
 
 .question-label {
+    font-weight: bold;
 }
 
 .question-fields {
@@ -85,9 +221,8 @@ select {
   width: 100%;
   height: 15px;
   border-radius: 5px;  
-  background: #d3d3d3;
+  background: #39b582;
   outline: none;
-  opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
 }
@@ -95,16 +230,16 @@ select {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 128px;
-  height: 128px;
+  width: 80px;
+  height: 80px;
   border: 0;
   background: url('/static/images/arrow.png');
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 128px;
-  height: 128px;
+  width: 80px;
+  height: 80px;
   border: 0;
   background: url('/static/images/arrow.png');
   cursor: pointer;
@@ -113,7 +248,6 @@ select {
 .insect-feel {
     text-align: center;
     max-width: 700px;
-
 }
 
 .feelcontainer {
@@ -135,3 +269,9 @@ select {
   font-size: 0;
   line-height: 0
 }
+
+
+
+
+
+

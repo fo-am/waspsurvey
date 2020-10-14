@@ -6,15 +6,16 @@
   {% if form.field.widget.attrs.category == category.name or not form.field.widget.attrs.category %}
 
   <!-- hide wasp id fields -->
+  {% if form.field.widget.attrs.code != 'wasp-id' %} 
   <div class="{% if form.errors%} danger {% endif %} question">
     <div class="question-label">
       {{ form.label|safe }}
       {% if form.field.required %}
-      <span class="glyphicon glyphicon-asterisk" style="color: #f8d10f;"> </span>
+      <span class="glyphicon glyphicon-asterisk" style="color: red;"> </span>
       {% endif %}
     </div>
     
-    <span class="help-inline" style="color: #f8d10f;">
+    <span class="help-inline" style="color: red;">
       <strong> {% for error in  form.errors %}{{ error }}{% endfor %} </strong>
     </span> <br>
 
@@ -44,6 +45,11 @@
     </div> <!-- question-fields -->
     
   </div> <!-- question -->
+  {% else %} <!-- wasp-id -->
+  	{% for field in form %}
+        {{ field }}
+        {% endfor %} 
+  {% endif %} <!-- wasp-id -->  
   {% endif %} <!-- category check -->
   {% endfor %} <!-- form --> 
 </div> <!-- question-top -->

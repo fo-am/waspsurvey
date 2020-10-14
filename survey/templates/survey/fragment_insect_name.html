@@ -2,11 +2,13 @@
 
 <div style="float:left; margin-right: 1em; margin-bottom: 1em;">
 <img src="/{{ insect.photo }}"><br>
+<div style="width: 100%">
 <input type="text"
        name="{{ insect.name }}"
        value=""			
        id="{{ insect.name }}"
-       style="width:12em;"><br>
+       style="margin: auto;">
+</div>
 <script>
   document.addEventListener("DOMContentLoaded", function(event) { 
   link_insect_name("{{ insect.name }}","id_{{ form.name }}");
