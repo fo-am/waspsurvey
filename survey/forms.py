@@ -31,6 +31,7 @@ class ResponseForm(models.ModelForm):
         Question.INSECTS_FEEL: forms.CharField,
         Question.TEXT_FEEL: forms.IntegerField,
         Question.VIDEO_FEEL: forms.IntegerField,
+        Question.VIDEO_TEXT: forms.CharField,
         Question.NAME_INSECT: forms.CharField,
     }
 
@@ -42,6 +43,7 @@ class ResponseForm(models.ModelForm):
         Question.SELECT_IMAGE: ImageSelectWidget,
         Question.SELECT_MULTIPLE: forms.CheckboxSelectMultiple,
         Question.SELECT_INSECT: forms.TextInput,
+        Question.VIDEO_TEXT: forms.Textarea,
     }
 
     class Meta:
@@ -247,6 +249,7 @@ class ResponseForm(models.ModelForm):
                                  Question.INSECTS_FEEL,
                                  Question.TEXT_FEEL,
                                  Question.VIDEO_FEEL,
+                                 Question.VIDEO_TEXT,
                                  Question.NAME_INSECT]:
             qchoices = question.get_choices()
             # add an empty option at the top so that the user has to explicitly

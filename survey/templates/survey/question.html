@@ -19,7 +19,8 @@
       <strong> {% for error in  form.errors %}{{ error }}{% endfor %} </strong>
     </span> <br>
 
-    <div class="question-fields">      
+    <div class="question-fields">
+      {% if form.field.widget.attrs.type != 'video-text' %}
       {% if form.field.widget.input_type == 'select' %}
       <select name="{{form.name}}"{% if form.field.widget.attrs.disabled %} disabled{% endif %}>
         {% endif %}
@@ -30,6 +31,7 @@
 
         {% if form.field.widget.input_type == 'select' %}
       </select>
+      {% endif %}
       {% endif %}
 
       {% if form.field.widget.attrs.type == 'select-insect' %}	    
@@ -42,6 +44,8 @@
       {% include "survey/fragment_text_feel.html" %}
       {% elif form.field.widget.attrs.type == 'video-feel' %}	    
       {% include "survey/fragment_video_feel.html" %}
+      {% elif form.field.widget.attrs.type == 'video-text' %}	    
+      {% include "survey/fragment_video_text.html" %}
       {% elif form.field.widget.attrs.type == 'name-insect' %}	    
       {% include "survey/fragment_insect_name.html" %}
       {% endif %}

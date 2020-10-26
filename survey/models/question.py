@@ -64,6 +64,7 @@ class Question(models.Model):
     INSECTS_FEEL = "insects-feel"
     TEXT_FEEL = "text-feel"
     VIDEO_FEEL = "video-feel"
+    VIDEO_TEXT = "video-text"
     NAME_INSECT = "name-insect"
     
     QUESTION_TYPES = (
@@ -80,6 +81,7 @@ class Question(models.Model):
         (INSECTS_FEEL, _("Insects feel")),
         (TEXT_FEEL, _("Text feel")),
         (VIDEO_FEEL, _("Video feel")),
+        (VIDEO_TEXT, _("Video text")),
         (NAME_INSECT, _("Name insect")),
     )
 
