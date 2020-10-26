@@ -83,49 +83,46 @@ label {
   display: block;
 }
 
-
-/*
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #f8d10f;
-}
-*/
-
 input[type=submit], input[type=button] {
-  color: white;
-  display: block;
-  width:100%;
-  margin-top:15px;
-  border: none;
-  padding: 5px;
-  font-size: 1.1em;
-  cursor: pointer;
+    font-weight: bold;
+    padding: 1em;
+    border-radius: 1em;
+    background: #c2ebff;
+    box-shadow: 5px 5px 5px #199562;
 }
+
+input[type=submit]:focus, input[type=button]:focus {
+    outline: none !important;    
+    border: 1px solid #c2ebff;
+}
+
 
 input[type="checkbox"], input[type="radio"]{
-	background: rgba(191,185,169,.2);
-	height: 16px;
-	cursor: pointer;
-	border-radius: 3px;
-	width:16px;
-	-moz-appearance:none;
-	-webkit-appearance:none;
-	box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
-  vertical-align: middle;
+    background: rgba(191,185,169,.2);
+    height: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    width:16px;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.44) inset;
+    vertical-align: middle;
 }
 
 input[type="radio"] {
-	border-radius: 50%;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
 }
 
 input[type="checkbox"]:checked, input[type="radio"]:checked {
-  background: #f8d10f;
-  box-shadow: 0 1px 2px rgba(0,0,0,.44);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.44);
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.44);
+    background: #f8d10f;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px rgba(0,0,0,.44);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.44);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.44);
 }
 
 ::-webkit-input-placeholder {
