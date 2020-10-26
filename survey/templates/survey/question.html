@@ -36,6 +36,8 @@
       {% include "survey/fragment_insect_select.html" %}      
       {% elif form.field.widget.attrs.type == 'insect-feel' %}	    
       {% include "survey/fragment_insect_feel.html" %}
+      {% elif form.field.widget.attrs.type == 'insects-feel' %}	    
+      {% include "survey/fragment_insects_feel.html" %}
       {% elif form.field.widget.attrs.type == 'text-feel' %}	    
       {% include "survey/fragment_text_feel.html" %}
       {% elif form.field.widget.attrs.type == 'name-insect' %}	    

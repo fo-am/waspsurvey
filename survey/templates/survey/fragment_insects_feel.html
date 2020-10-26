@@ -1,0 +1,33 @@
+
+<div class="insect-feel">
+  <div class="text-center">
+    <img id="insect_img" src="">
+  </div>
+
+  <div class="feelcontainer">
+    <div class="feelface" onclick="push_slider(5,'feelslider-{{ form.name }}');">
+      <img src="/static/images/face1.png"></div>
+    <div class="feelface" onclick="push_slider(28,'feelslider-{{ form.name }}');">
+      <img src="/static/images/face2.png"></div>
+    <div class="feelface" onclick="push_slider(50,'feelslider-{{ form.name }}');">
+      <img src="/static/images/face3.png"></div>
+    <div class="feelface" onclick="push_slider(75,'feelslider-{{ form.name }}');">
+      <img src="/static/images/face4.png"></div>
+    <div class="feelface" onclick="push_slider(98,'feelslider-{{ form.name }}');">
+      <img src="/static/images/face5.png"></div>
+    <div class="feelstretch"></div>
+  </div>
+  <div class="slidecontainer">
+    <input id="feelslider-{{ form.name }}" class="slider" type="range" min="1" max="100" value="50">
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) { 
+  clear_insects();
+  {% for insect in known_insects %}
+  add_insect("{{insect.name}}","{{insect.photo}}");
+  {% endfor %}
+  setup_insects_feel("{{ form.name }}");
+  });	    
+</script>

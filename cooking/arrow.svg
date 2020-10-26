@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
+     inkscape:zoom="3.959798"
      inkscape:cx="346.60512"
-     inkscape:cy="502.13347"
+     inkscape:cy="461.72736"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -73,14 +73,14 @@
      id="layer1">
     <path
        inkscape:connector-curvature="0"
-       style="opacity:1;fill:#040c08;fill-opacity:0.54822338;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 86.163736,150.83903 c -2.5,0 -4.999908,2.50031 -9.999908,7.50032 -9.999998,9.99999 -9.999906,9.9996 -9.999906,14.99959 0,5.00001 2.229694,5.00022 4.999697,5.00022 h 5.000209 v 7.4998 c 0,2.77 2.229697,5.00021 4.999696,5.00021 h 10.000422 c 2.77,0 4.999696,-2.23021 4.999696,-5.00021 v -7.4998 h 5.000208 c 2.77,0 4.99969,-2.1e-4 4.99969,-5.00022 0,-4.99999 1e-4,-4.9996 -9.999898,-14.99959 -5,-5.00001 -7.499908,-7.50032 -9.999906,-7.50032 z"
+       style="opacity:1;fill:#040c08;fill-opacity:0.5482234;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 126.7887,151.5072 c -2.5,0 -4.9999,2.50031 -9.9999,7.50032 -10,9.99999 -9.99991,9.9996 -9.99991,14.99959 0,5.00001 2.22969,5.00022 4.9997,5.00022 h 5.00021 v 7.4998 c 0,2.77 2.22969,5.00021 4.99969,5.00021 h 10.00042 c 2.77,0 4.9997,-2.23021 4.9997,-5.00021 v -7.4998 h 5.00021 c 2.77,0 4.99969,-2.1e-4 4.99969,-5.00022 0,-4.99999 1e-4,-4.9996 -9.9999,-14.99959 -5,-5.00001 -7.49991,-7.50032 -9.99991,-7.50032 z"
        id="rect817-6"
        inkscape:export-filename="/home/dave/code/waspsurvey/static/images/arrow.png"
        inkscape:export-xdpi="49.154236"
        inkscape:export-ydpi="49.154236" />
     <path
-       style="opacity:1;fill:#f8d10f;fill-opacity:1;stroke:none;stroke-width:3.77952766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#f8d10f;fill-opacity:1;stroke:#000000;stroke-width:3.77952761;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.39593908"
        d="M 321.25977 565.03906 C 311.81095 565.03906 302.36248 574.48908 283.46484 593.38672 C 245.66957 631.18199 245.66992 631.18049 245.66992 650.07812 C 245.66992 668.97576 254.09711 668.97656 264.56641 668.97656 L 283.46484 668.97656 L 283.46484 697.32227 C 283.46484 707.79156 291.89204 716.2207 302.36133 716.2207 L 340.1582 716.2207 C 350.62749 716.2207 359.05469 707.79156 359.05469 697.32227 L 359.05469 668.97656 L 377.95312 668.97656 C 388.42242 668.97656 396.84961 668.97576 396.84961 650.07812 C 396.84961 631.18049 396.84996 631.18199 359.05469 593.38672 C 340.15705 574.48908 330.70858 565.03906 321.25977 565.03906 z "
        id="rect817"
        inkscape:export-filename="/home/dave/code/waspsurvey/static/images/arrow.png"

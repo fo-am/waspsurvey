@@ -112,6 +112,52 @@ function update_wasp_id(wasp_id,dest) {
     $("#"+dest).val(wasp_id);
 }
 
+//////////////////////////////////////////////////////////
+
+var insects = [];
+function clear_insects() { insects = []; }
+function add_insect(id,image) { insects.push([id,image]); }
+
+function setup_insects_feel(id) {
+    var dest = $("#id_"+id);
+    var slider = $("#feelslider-"+id);
+    var index = 0;
+
+    dest.hide();
+
+    // show first image
+    if (insects.length>0) {
+	$("#insect_img").attr("src","/"+insects[index][1]);
+    }
+          
+    handler=function (ev) {
+	// if we haven't run out of insects yet
+	if (index<insects.length-1) {
+	    // override form submit event...
+	    ev = ev || window.event;
+	    if(ev.preventDefault) { 
+		ev.preventDefault();    
+	    }
+	}
+
+	// insert into current object
+	var o = csv_to_object(dest.val());	
+	l = object_add(o,insects[index][0],slider.val())
+	dest.val(object_to_csv(o));
+
+	index++;
+	$("#insect_img").attr("src","/"+insects[index][1]);
+	// reset slider
+	slider.val(50);
+    }
+    
+    form = $("#form_root")[0];
+    if (form.addEventListener) form.addEventListener('submit', handler, false);  
+    if (form.attachEvent) form.attachEvent('onsubmit', handler);       
+}
+
+//////////////////////////////////////////////////////////
+
 
 function test() {
     l = ["1","2","3"]

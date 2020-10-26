@@ -28,6 +28,7 @@ class ResponseForm(models.ModelForm):
         Question.DATE: forms.DateField,
         Question.SELECT_INSECT: forms.CharField,
         Question.INSECT_FEEL: forms.IntegerField,
+        Question.INSECTS_FEEL: forms.CharField,
         Question.TEXT_FEEL: forms.IntegerField,
         Question.NAME_INSECT: forms.CharField,
     }
@@ -242,6 +243,7 @@ class ResponseForm(models.ModelForm):
                                  Question.DATE,
                                  Question.SELECT_INSECT,
                                  Question.INSECT_FEEL,
+                                 Question.INSECTS_FEEL,
                                  Question.TEXT_FEEL,
                                  Question.NAME_INSECT]:
             qchoices = question.get_choices()

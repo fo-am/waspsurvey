@@ -61,6 +61,7 @@ class Question(models.Model):
     DATE = "date"
     SELECT_INSECT = "select-insect"
     INSECT_FEEL = "insect-feel"
+    INSECTS_FEEL = "insects-feel"
     TEXT_FEEL = "text-feel"
     NAME_INSECT = "name-insect"
     
@@ -75,6 +76,7 @@ class Question(models.Model):
         (DATE, _("Date")),
         (SELECT_INSECT, _("Select insect")),
         (INSECT_FEEL, _("Insect feel")),
+        (INSECTS_FEEL, _("Insects feel")),
         (TEXT_FEEL, _("Text feel")),
         (NAME_INSECT, _("Name insect")),
     )
