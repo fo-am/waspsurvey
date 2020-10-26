@@ -33,27 +33,20 @@ textarea {
 }
 
 .button {
-  border: none;
-  color: white;
-  display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 20px 50px;
-  border-radius: 3px;
-  margin:5px;
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  transition: text-shadow 0.3s ease;
+    font-weight: bold;
+    padding: 1em;
+    border-radius: 1em;
+    background: white;
 }
 
-.button:active {
-  position: relative;
-  top: 1px;
-  border-bottom-width: 2px;
+.button {
+    outline: none !important;    
+    border: 1px solid #c2ebff;
 }
+
 
 .button:hover {
-  text-shadow: 2px 2px 0px rgba(0,0,0,.3)
+    background: #f8d10f;
 }
 
 .form {

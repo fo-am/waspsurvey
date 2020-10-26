@@ -95,6 +95,10 @@ function link_insect_selector(from,to) {
     }); 
 }
 
+function insect_selector_none(to) {
+    $("#"+to).val("none");
+}
+
 function link_insect_name(from,to) {
     $("#"+to).val("");
     $("#"+to).hide();
