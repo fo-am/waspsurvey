@@ -66,6 +66,7 @@ class Question(models.Model):
     VIDEO_FEEL = "video-feel"
     VIDEO_TEXT = "video-text"
     NAME_INSECT = "name-insect"
+    INFO = "info"
     
     QUESTION_TYPES = (
         (TEXT, _("Text (multiple line)")),
@@ -83,6 +84,7 @@ class Question(models.Model):
         (VIDEO_FEEL, _("Video feel")),
         (VIDEO_TEXT, _("Video text")),
         (NAME_INSECT, _("Name insect")),
+        (INFO, _("Information")),
     )
 
     DEFAULT = "default"

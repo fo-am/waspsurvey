@@ -21,6 +21,7 @@ class ResponseForm(models.ModelForm):
 
     FIELDS = {
         Question.TEXT: forms.CharField,
+        Question.INFO: forms.CharField,
         Question.SHORT_TEXT: forms.CharField,
         Question.SELECT_MULTIPLE: forms.MultipleChoiceField,
         Question.INTEGER: forms.IntegerField,
@@ -240,6 +241,7 @@ class ResponseForm(models.ModelForm):
         :rtype: List of String or None """
         qchoices = None
         if question.type not in [Question.TEXT,
+                                 Question.INFO,
                                  Question.SHORT_TEXT,
                                  Question.INTEGER,
                                  Question.FLOAT,
@@ -290,7 +292,7 @@ class ResponseForm(models.ModelForm):
         field.widget.attrs["type"] = question.type
         field.widget.attrs["code"] = question.code
         field.widget.attrs["choices"] = question.choices
-        field.widget.attrs["placeholder"] = "..."
+        #field.widget.attrs["placeholder"] = "Please enter text"
         
         if question.type == Question.DATE:
             field.widget.attrs["class"] = "date"

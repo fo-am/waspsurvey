@@ -14,6 +14,8 @@
       <span class="glyphicon glyphicon-asterisk" style="color: red;"> </span>
       {% endif %}
     </div>
+
+    {% if form.field.widget.attrs.type != 'info' %}
     
     <span class="help-inline" style="color: red;">
       <strong> {% for error in  form.errors %}{{ error }}{% endfor %} </strong>
@@ -51,6 +53,8 @@
       {% endif %}
       
     </div> <!-- question-fields -->
+
+    {% endif %} <!-- info -->
     
   </div> <!-- question -->
   {% else %} <!-- wasp-id -->
