@@ -31,7 +31,7 @@
         {% if form.field.widget.input_type == 'select' %}
       </select>
       {% endif %}
-      
+
       {% if form.field.widget.attrs.type == 'select-insect' %}	    
       {% include "survey/fragment_insect_select.html" %}      
       {% elif form.field.widget.attrs.type == 'insect-feel' %}	    
@@ -40,6 +40,8 @@
       {% include "survey/fragment_insects_feel.html" %}
       {% elif form.field.widget.attrs.type == 'text-feel' %}	    
       {% include "survey/fragment_text_feel.html" %}
+      {% elif form.field.widget.attrs.type == 'video-feel' %}	    
+      {% include "survey/fragment_video_feel.html" %}
       {% elif form.field.widget.attrs.type == 'name-insect' %}	    
       {% include "survey/fragment_insect_name.html" %}
       {% endif %}

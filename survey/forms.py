@@ -30,6 +30,7 @@ class ResponseForm(models.ModelForm):
         Question.INSECT_FEEL: forms.IntegerField,
         Question.INSECTS_FEEL: forms.CharField,
         Question.TEXT_FEEL: forms.IntegerField,
+        Question.VIDEO_FEEL: forms.IntegerField,
         Question.NAME_INSECT: forms.CharField,
     }
 
@@ -245,6 +246,7 @@ class ResponseForm(models.ModelForm):
                                  Question.INSECT_FEEL,
                                  Question.INSECTS_FEEL,
                                  Question.TEXT_FEEL,
+                                 Question.VIDEO_FEEL,
                                  Question.NAME_INSECT]:
             qchoices = question.get_choices()
             # add an empty option at the top so that the user has to explicitly
@@ -284,6 +286,7 @@ class ResponseForm(models.ModelForm):
         field.widget.attrs["category"] = question.category.name if question.category else ""
         field.widget.attrs["type"] = question.type
         field.widget.attrs["code"] = question.code
+        field.widget.attrs["choices"] = question.choices
         
         if question.type == Question.DATE:
             field.widget.attrs["class"] = "date"
