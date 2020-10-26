@@ -270,7 +270,10 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
   line-height: 0
 }
 
-
+.insect_image {
+    width: 270px;
+    height: auto;
+}
 
 
 

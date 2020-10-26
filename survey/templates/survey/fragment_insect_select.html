@@ -6,7 +6,7 @@
 	 name="{{ insect.name }}"
 	 value="{{ insect.name }}"			
 	 id="{{ insect.name }}">
-  <img src="/{{ insect.photo }}">
+  <img class="insect_image" src="/{{ insect.photo }}">
   <script>
     document.addEventListener("DOMContentLoaded", function(event) { 
     link_insect_selector("{{ insect.name }}","id_{{form.name}}");
