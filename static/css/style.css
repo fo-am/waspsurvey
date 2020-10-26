@@ -18,14 +18,14 @@ h1, h2, h3 {
 textarea, select, input[type="number"], input[type="text"] {
     width: 100%;
     border-radius: 3px;
-    border: 2px solid #39b582;
+    border: 3px solid #39b582;
 /*    background: #f8d10f;   */
     background: white; 
 }
 
 textarea:focus, select:focus, input[type="number"]:focus, input[type="text"]:focus {
     outline: none !important;    
-    border: 2px solid #f8d10f;
+    border: 3px solid #f8d10f;
 }
 
 textarea {

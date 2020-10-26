@@ -290,6 +290,7 @@ class ResponseForm(models.ModelForm):
         field.widget.attrs["type"] = question.type
         field.widget.attrs["code"] = question.code
         field.widget.attrs["choices"] = question.choices
+        field.widget.attrs["placeholder"] = "..."
         
         if question.type == Question.DATE:
             field.widget.attrs["class"] = "date"
