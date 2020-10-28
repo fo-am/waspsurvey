@@ -118,7 +118,7 @@ function update_wasp_id(wasp_id,dest) {
 
 function link_insect_wasp_bee(from,to) {
     $("#"+to).val("");
-   // $("#"+to).hide();
+    $("#"+to).hide();
     $("#"+from+"-wasp").on("change", function(event) {
 	var o = csv_to_object($("#"+to).val());	
 	l = object_add(o,from,"wasp")
