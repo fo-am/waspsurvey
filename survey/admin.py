@@ -9,6 +9,13 @@ from survey.models import Answer, Category, Question, Response, Survey, Image, I
 from django.forms import TextInput, Textarea
 from django.db import models
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
+
+def duplicate_survey(modeladmin, request, queryset):
+    for obj in queryset:
+        obj.pk = None
+        obj.save()
+duplicate_survey.short_description = _("Duplicate")
 
 class QuestionInline(admin.TabularInline):
     model = Question
@@ -27,7 +34,7 @@ class SurveyAdmin(admin.ModelAdmin):
     list_display = ("name", "is_published", "need_logged_user", "template")
     list_filter = ("is_published", "need_logged_user")
     inlines = [CategoryInline, QuestionInline]
-    actions = [make_published, Survey2Csv.export_as_csv, Survey2Tex.export_as_tex]
+    actions = [make_published, Survey2Csv.export_as_csv, Survey2Tex.export_as_tex, duplicate_survey]
 
 
 class AnswerBaseInline(admin.StackedInline):
