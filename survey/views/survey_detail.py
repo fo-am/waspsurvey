@@ -65,7 +65,12 @@ class SurveyDetail(View):
                 if question_id in request.session[session_key]:
                     i = request.session[session_key][question_id]                    
                     # need to get randomize from original question ideally
-                    known_insects = Insect.objects.filter(name__in=i.split(",")).order_by('?')
+                    known_list = i.split(",")
+                    if len(known_list)>0 and i!="none":
+                        known_insects = Insect.objects.filter(name__in=known_list).order_by('?')
+                    else:
+                        # if none have been picked through them all in
+                        known_insects = Insect.objects.filter(location__icontains=location).order_by('?')
         except Question.DoesNotExist:
             pass
 
