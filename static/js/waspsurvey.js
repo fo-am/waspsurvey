@@ -116,6 +116,26 @@ function update_wasp_id(wasp_id,dest) {
     $("#"+dest).val(wasp_id);
 }
 
+function link_insect_wasp_bee(from,to) {
+    $("#"+to).val("");
+   // $("#"+to).hide();
+    $("#"+from+"-wasp").on("change", function(event) {
+	var o = csv_to_object($("#"+to).val());	
+	l = object_add(o,from,"wasp")
+	$("#"+to).val(object_to_csv(o));
+    }); 
+    $("#"+from+"-bee").on("change", function(event) {
+	var o = csv_to_object($("#"+to).val());	
+	l = object_add(o,from,"bee")
+	$("#"+to).val(object_to_csv(o));
+    }); 
+    $("#"+from+"-none").on("change", function(event) {
+	var o = csv_to_object($("#"+to).val());	
+	l = object_add(o,from,"neither")
+	$("#"+to).val(object_to_csv(o));
+    }); 
+}
+
 //////////////////////////////////////////////////////////
 
 var insects = [];

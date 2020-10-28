@@ -34,6 +34,7 @@ class ResponseForm(models.ModelForm):
         Question.VIDEO_FEEL: forms.IntegerField,
         Question.VIDEO_TEXT: forms.CharField,
         Question.NAME_INSECT: forms.CharField,
+        Question.INSECT_WASP_BEE: forms.CharField,
     }
 
     WIDGETS = {
@@ -252,7 +253,8 @@ class ResponseForm(models.ModelForm):
                                  Question.TEXT_FEEL,
                                  Question.VIDEO_FEEL,
                                  Question.VIDEO_TEXT,
-                                 Question.NAME_INSECT]:
+                                 Question.NAME_INSECT,
+                                 Question.INSECT_WASP_BEE]:
             qchoices = question.get_choices()
             # add an empty option at the top so that the user has to explicitly
             # select one of the options

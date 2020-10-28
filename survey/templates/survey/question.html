@@ -48,6 +48,8 @@
       {% include "survey/fragment_video_feel.html" %}
       {% elif form.field.widget.attrs.type == 'video-text' %}	    
       {% include "survey/fragment_video_text.html" %}
+      {% elif form.field.widget.attrs.type == 'insect-wasp-bee' %}	    
+      {% include "survey/fragment_insect_wasp_bee.html" %}
       {% elif form.field.widget.attrs.type == 'name-insect' %}	    
       {% include "survey/fragment_insect_name.html" %}
       {% endif %}
