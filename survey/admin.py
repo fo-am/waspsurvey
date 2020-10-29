@@ -10,11 +10,34 @@ from django.forms import TextInput, Textarea
 from django.db import models
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+from copy import deepcopy
+
+def model_copy(obj):
+    obj = deepcopy(obj)
+    obj.pk = None
+    obj.save()
 
 def duplicate_survey(modeladmin, request, queryset):
-    for obj in queryset:
-        obj.pk = None
-        obj.save()
+    for orig_survey in queryset:
+        survey = deepcopy(orig_survey)
+        survey.name = survey.name + ' -- Copy'
+        survey.pk = None
+        survey.save()
+        catmap = {}
+        for orig_cat in orig_survey.categories.all():
+            cat = deepcopy(orig_cat)
+            cat.survey = survey
+            cat.pk = None
+            cat.save()
+            # need to map the categories so we can reconnect the qs to the new ones
+            catmap[orig_cat.pk]=cat
+        for orig_que in orig_survey.questions.all():
+            que = deepcopy(orig_que)
+            que.survey = survey
+            que.category = catmap[orig_que.category.pk]
+            que.pk = None
+            que.save()
+            
 duplicate_survey.short_description = _("Duplicate")
 
 class QuestionInline(admin.TabularInline):
@@ -28,6 +51,7 @@ class QuestionInline(admin.TabularInline):
 class CategoryInline(admin.TabularInline):
     model = Category
     extra = 0
+    ordering = ("order",)
 
 
 class SurveyAdmin(admin.ModelAdmin):

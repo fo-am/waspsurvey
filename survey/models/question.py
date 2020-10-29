@@ -93,12 +93,14 @@ class Question(models.Model):
     USER_LOCATION = "wasp-location"
     WASPS_KNOWN = "wasps-known"
     WASP_ID = "wasp-id"
+    USER_FARMER = "user-farmer"
     
     QUESTION_CODES = (
         (DEFAULT, _("None")),
         (USER_LOCATION, _("User location")),
         (WASPS_KNOWN, _("Known wasps")),
         (WASP_ID, _("Wasp ID field (hidden)")),
+        (USER_FARMER, _("User is farmer")),
     )
     
     text = models.TextField(_("Text"), blank=True)
