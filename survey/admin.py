@@ -47,18 +47,25 @@ class QuestionInline(admin.TabularInline):
     formfield_overrides = {        
         models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':20})},
     }
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        # limit the categories shown to the ones owned by this survey
+        if db_field.name == "category":
+            parent_id = request.resolver_match.kwargs["object_id"]
+            kwargs["queryset"] = Category.objects.filter(survey=parent_id)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 
 class CategoryInline(admin.TabularInline):
     model = Category
     extra = 0
     ordering = ("order",)
-
+    
 
 class SurveyAdmin(admin.ModelAdmin):
     list_display = ("name", "is_published", "need_logged_user", "template")
     list_filter = ("is_published", "need_logged_user")
     inlines = [CategoryInline, QuestionInline]
-    actions = [make_published, Survey2Csv.export_as_csv, Survey2Tex.export_as_tex]
+    actions = [make_published, Survey2Csv.export_as_csv, Survey2Tex.export_as_tex, duplicate_survey]
 
 
 class AnswerBaseInline(admin.StackedInline):

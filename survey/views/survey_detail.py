@@ -44,7 +44,7 @@ class SurveyDetail(View):
         insects = []
         location = ""
         try:
-            q=Question.objects.get(code=Question.USER_LOCATION)            
+            q=Question.objects.get(code=Question.USER_LOCATION,survey=survey)            
             session_key = "survey_%s" % (kwargs["id"],)
             if session_key in request.session:
                 question_id = "question_"+str(q.id)
@@ -58,7 +58,7 @@ class SurveyDetail(View):
         #  load known insects if they have been recorded yet
         known_insects = []
         try:
-            q=Question.objects.get(code=Question.WASPS_KNOWN)            
+            q=Question.objects.get(code=Question.WASPS_KNOWN,survey=survey)            
             session_key = "survey_%s" % (kwargs["id"],)
             if session_key in request.session:
                 question_id = "question_"+str(q.id)
