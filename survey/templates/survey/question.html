@@ -2,6 +2,11 @@
 
 <div class="question-top">
   {% for form in response_form %}
+
+  <!-- hide if we are a farmer -->
+  {% if form.field.widget.attrs.code != 'hide-farmer' or farmer == 'no-i-dont' %} 
+  <!-- hide if we are not a farmer -->
+  {% if form.field.widget.attrs.code != 'hide-not-farmer' or farmer != 'no-i-dont' %} 
   
   {% if form.field.widget.attrs.category == category.name or not form.field.widget.attrs.category %}
 
@@ -65,5 +70,9 @@
         {% endfor %} 
   {% endif %} <!-- wasp-id -->  
   {% endif %} <!-- category check -->
+
+  {% endif %} <!-- not farmer -->
+  {% endif %} <!-- am farmer -->
+
   {% endfor %} <!-- form --> 
 </div> <!-- question-top -->

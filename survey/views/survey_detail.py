@@ -40,6 +40,18 @@ class SurveyDetail(View):
         
         categories = form.current_categories()
 
+        # is the use a farmer?
+        farmer = ""
+        try:
+            q=Question.objects.get(code=Question.USER_FARMER,survey=survey)            
+            session_key = "survey_%s" % (kwargs["id"],)
+            if session_key in request.session:
+                question_id = "question_"+str(q.id)
+                if question_id in request.session[session_key]:
+                    farmer = request.session[session_key][question_id]
+        except Question.DoesNotExist:
+            farmer="no user is farmer question"
+        
         # get insects by location
         insects = []
         location = ""
@@ -105,6 +117,7 @@ class SurveyDetail(View):
             "categories": categories,
             "step": step,
             "asset_context": asset_context,
+            "farmer": farmer,
             "location": location,
             "insects": insects,
             "known_insects": known_insects,
