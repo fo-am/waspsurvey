@@ -9,10 +9,10 @@
   {% if form.field.widget.attrs.code != 'hide-not-farmer' or farmer != 'no-i-dont' %} 
   
   {% if form.field.widget.attrs.category == category.name or not form.field.widget.attrs.category %}
-
+  
   <!-- hide wasp id fields -->
   {% if form.field.widget.attrs.code != 'wasp-id' %} 
-  <div class="{% if form.errors%} danger {% endif %} question">
+  <div id="{{ form.name }}" class="{% if form.errors%} danger {% endif %} question">
     <div class="question-label">
       {{ form.label|safe }}
       {% if form.field.required %}
