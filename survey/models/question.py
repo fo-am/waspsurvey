@@ -52,6 +52,7 @@ class Question(models.Model):
 
     TEXT = "text"
     SHORT_TEXT = "short-text"
+    OTHER_TEXT = "other-text"
     RADIO = "radio"
     SELECT = "select"
     SELECT_IMAGE = "select_image"
@@ -72,6 +73,7 @@ class Question(models.Model):
     QUESTION_TYPES = (
         (TEXT, _("Text (multiple line)")),
         (SHORT_TEXT, _("Short text (one line)")),
+        (OTHER_TEXT, _("Hidden other field")),
         (RADIO, _("Radio buttons")),
         (SELECT, _("Select list")),
         (SELECT_MULTIPLE, _("Select Multiple")),

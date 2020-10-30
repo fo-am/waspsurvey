@@ -36,6 +36,14 @@
         {{ field }} <br>
         {% endfor %}
 
+	{% if form.field.widget.attrs.type == 'other-text' %}
+	<script>
+	  document.addEventListener("DOMContentLoaded", function(event) { 
+	  link_other_field("id_{{ form.name }}");
+	  });
+	</script>
+	{% endif %}
+
         {% if form.field.widget.input_type == 'select' %}
       </select>
       {% endif %}

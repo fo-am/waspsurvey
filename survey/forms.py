@@ -23,6 +23,7 @@ class ResponseForm(models.ModelForm):
         Question.TEXT: forms.CharField,
         Question.INFO: forms.CharField,
         Question.SHORT_TEXT: forms.CharField,
+        Question.OTHER_TEXT: forms.CharField,
         Question.SELECT_MULTIPLE: forms.MultipleChoiceField,
         Question.INTEGER: forms.IntegerField,
         Question.FLOAT: forms.FloatField,
@@ -40,6 +41,7 @@ class ResponseForm(models.ModelForm):
     WIDGETS = {
         Question.TEXT: forms.Textarea,
         Question.SHORT_TEXT: forms.TextInput,
+        Question.OTHER_TEXT: forms.TextInput,
         Question.RADIO: forms.RadioSelect,
         Question.SELECT: forms.Select,
         Question.SELECT_IMAGE: ImageSelectWidget,
@@ -244,6 +246,7 @@ class ResponseForm(models.ModelForm):
         if question.type not in [Question.TEXT,
                                  Question.INFO,
                                  Question.SHORT_TEXT,
+                                 Question.OTHER_TEXT,
                                  Question.INTEGER,
                                  Question.FLOAT,
                                  Question.DATE,

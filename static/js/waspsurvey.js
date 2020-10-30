@@ -182,6 +182,31 @@ function setup_insects_feel(id) {
 
 //////////////////////////////////////////////////////////
 
+function link_other_field(id) {
+    var w = $("#"+id);
+    // find and hide the div box we are in
+    w=w.parent().parent();
+    w.hide();
+    // get the previous question's options
+    var q_split = id.split("_");
+    var q_num = parseInt(q_split[q_split.length-1]);    
+    var source_id = "id_question_"+(q_num-1);
+    var els = $("[id^="+source_id+"]");
+    var index=0;
+    els.each(function () {
+	// fade in when the last one is selected
+	if (index==els.length-1) {
+	    this.addEventListener('change',function() { w.fadeIn(500); });
+	} else {
+	    // otherwise fade out again
+	    this.addEventListener('change',function() { w.fadeOut(500); });
+	}
+	index++;
+    });
+}
+
+//////////////////////////////////////////////////////////
+
 
 function test() {
     l = ["1","2","3"]
