@@ -133,7 +133,16 @@ function link_insect_wasp_bee(from,to) {
 	var o = csv_to_object($("#"+to).val());	
 	l = object_add(o,from,"neither")
 	$("#"+to).val(object_to_csv(o));
-    }); 
+    });
+
+    // shuffle em up
+    var cards = $("[id^="+from+"-holder]");
+    for(var i = 0; i < cards.length; i++){
+	var target = Math.floor(Math.random() * cards.length -1) + 1;
+	var target2 = Math.floor(Math.random() * cards.length -1) +1;
+	cards.eq(target).before(cards.eq(target2));
+    }
+    
 }
 
 //////////////////////////////////////////////////////////

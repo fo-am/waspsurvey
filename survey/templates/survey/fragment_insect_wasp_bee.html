@@ -3,15 +3,24 @@
 <div style="float:left; margin: 2px;">
   <img class="insect_image" src="/{{ insect.photo }}"><br>
 
+  <div id="{{ insect.name }}-holder-wasp">
   <input type="radio" id="{{ insect.name }}-wasp" name="{{ insect.name }}" value="wasp">
   <!-- tranlation please -->
   <label for="wasp">Wasp</label><br>
+  </div>
+  
+  
+  <div id="{{ insect.name }}-holder-bee">
   <input type="radio" id="{{ insect.name }}-bee" name="{{ insect.name }}" value="bee">
   <!-- tranlation please -->
   <label for="bee">Bee</label><br>
+  </div>
+
+  <div id="{{ insect.name }}-holder-dunno">
   <input type="radio" id="{{ insect.name }}-none" name="{{ insect.name }}" value="none">
   <!-- tranlation please -->
   <label for="none">I don't know</label><br>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function(event) { 
