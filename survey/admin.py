@@ -101,6 +101,7 @@ class InsectAdmin(admin.ModelAdmin):
 
 #admin.site.register(Question, QuestionInline)
 admin.site.register(Category)
+admin.site.register(Image)
 admin.site.register(Insect, InsectAdmin)
 admin.site.register(Survey, SurveyAdmin)
 admin.site.register(Response, ResponseAdmin)
