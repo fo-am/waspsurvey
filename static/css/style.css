@@ -82,7 +82,7 @@ input[type=submit], input[type=button] {
     padding: 1em;
     border-radius: 1em;
     background: #c2ebff;
-    box-shadow: 5px 5px 5px #199562;
+    box-shadow: 5px 5px 5px #9f9f9f;
 }
 
 input[type=submit]:focus, input[type=button]:focus {
@@ -169,7 +169,7 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
 }
 
 .question-label {
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .question-fields {

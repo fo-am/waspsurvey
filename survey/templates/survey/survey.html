@@ -30,7 +30,7 @@
 	{% endif %}
 	{% csrf_token %}
 	{% for category in categories %}
-	<div class="category-title"><h2> {{category.name}} </h2></div>
+<!--	<div class="category-title"><h2> {{category.name}} </h2></div> -->
 	{% include "survey/question.html" %}
 	{% endfor %}
         <br>
