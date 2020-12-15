@@ -25,8 +25,8 @@
 <script>
   document.addEventListener("DOMContentLoaded", function(event) { 
   clear_insects();
-  {% for insect in known_insects %}
-  add_insect("{{insect.name}}","{{insect.photo}}");
+  {% for insect in insects %}
+  add_insect("{{insect.name}}","{{insect.photo}}","{{ form.field.widget.attrs.choices }}");
   {% endfor %}
   setup_insects_feel("{{ form.name }}");
   });	    

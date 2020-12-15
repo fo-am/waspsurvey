@@ -98,12 +98,8 @@ function link_insect_selector(from,to,filt) {
     }); 
 
     var container = "#"+from+"-container";
-
     if (filt!="" && !in_list(from,filt)) {
-	//console.log("hiding");
 	$(container).hide();
-    } else {
-	//console.log("not hiding");
     }
 }
 
@@ -128,7 +124,7 @@ function update_wasp_id(wasp_id,dest) {
     $("#"+dest).val(wasp_id);
 }
 
-function link_insect_wasp_bee(from,to) {
+function link_insect_wasp_bee(from,to,filt) {
     $("#"+to).val("");
     $("#"+to).hide();
     $("#"+from+"-wasp").on("change", function(event) {
@@ -154,14 +150,22 @@ function link_insect_wasp_bee(from,to) {
 	var target2 = Math.floor(Math.random() * cards.length -1) +1;
 	cards.eq(target).before(cards.eq(target2));
     }
-    
+
+    var container = "#"+from+"-container";
+    if (filt!="" && !in_list(from,filt)) {
+	$(container).hide();
+    }	
 }
 
 //////////////////////////////////////////////////////////
 
 var insects = [];
 function clear_insects() { insects = []; }
-function add_insect(id,image) { insects.push([id,image]); }
+function add_insect(id,image,filt) {
+    if (filt=="" || in_list(id,filt)) {
+	insects.push([id,image]);
+    }
+}
 
 function setup_insects_feel(id) {
     var dest = $("#id_"+id);
@@ -200,7 +204,7 @@ function setup_insects_feel(id) {
     if (form.addEventListener) form.addEventListener('submit', handler, false);  
     if (form.attachEvent) form.attachEvent('onsubmit', handler);       
 }
-
+    
 //////////////////////////////////////////////////////////
 
 function link_other_field(id) {
