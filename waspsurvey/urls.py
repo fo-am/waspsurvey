@@ -28,5 +28,6 @@ urlpatterns = [
 
 if 'survey' in settings.INSTALLED_APPS:
     urlpatterns += [
+        url(r'', include('survey.urls')),
         url(r'^survey/', include('survey.urls'))
     ]

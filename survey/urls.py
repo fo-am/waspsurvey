@@ -6,7 +6,6 @@ from survey.views import ConfirmView, IndexView, SurveyCompleted, SurveyDetail
 from survey.views.survey_result import serve_result_csv
 
 urlpatterns = [
-#    url(r'^$', lambda r: HttpResponseRedirect('survey/')),
     url(r"^$", IndexView.as_view(), name="survey-list"),
     url(r"^(?P<id>\d+)/", SurveyDetail.as_view(), name="survey-detail"),
     url(r"^csv/(?P<primary_key>\d+)/", serve_result_csv, name="survey-result"),

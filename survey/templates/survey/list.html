@@ -4,11 +4,12 @@
 {% block body %}
 <div id="intro">
   <h1>{% trans "Wasp surveys"%}</h1>
-  
+
+  <div class="question">
   <ul>
     {% for survey in surveys %}
     <li><a href="{{ survey.get_absolute_url }}">{{survey.name}}</a></li>
     {% endfor %}
-</div>
+  </div>
 </div>
 {% endblock %}
