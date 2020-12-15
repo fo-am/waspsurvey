@@ -1,3 +1,5 @@
+{% load i18n %}
+
 {% for insect in insects %}
 
 <div style="float:left; margin: 2px;">
@@ -7,21 +9,17 @@
 
     <div id="{{ insect.name }}-holder-wasp">
       <input type="radio" id="{{ insect.name }}-wasp" name="{{ insect.name }}" value="wasp">
-      <!-- tranlation please -->
-      <label for="wasp">Wasp</label><br>
+      <label for="wasp">{% trans "Wasp" %}</label><br>
     </div>
-    
-    
+        
     <div id="{{ insect.name }}-holder-bee">
       <input type="radio" id="{{ insect.name }}-bee" name="{{ insect.name }}" value="bee">
-      <!-- tranlation please -->
-      <label for="bee">Bee</label><br>
+      <label for="bee">{% trans "Bee" %}</label><br>
     </div>
 
     <div id="{{ insect.name }}-holder-dunno">
       <input type="radio" id="{{ insect.name }}-none" name="{{ insect.name }}" value="none">
-      <!-- tranlation please -->
-      <label for="none">I don't know</label><br>
+      <label for="none">{% trans "I don't know" %}</label><br>
     </div>
   </div>
   

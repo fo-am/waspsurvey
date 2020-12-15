@@ -1,6 +1,8 @@
+{% load i18n %}
+
 {% for insect in insects %}
 
-<div id="{{ insect.name }}-container">
+<div id="{{ insect.name }}-container" style="float:left; margin: 0.5em;">
 <label class="image-label" for="{{ insect.name }}">		  
   <input type="checkbox"
 	 class="image-checkbox"
@@ -22,7 +24,6 @@
   <button style="margin: auto; display: block;"
 	  onclick="insect_selector_none('id_{{form.name}}');"
 	  class="button">
-    <!-- translate me -->
     {% trans "None of the above" %}
   </button>
 </div>

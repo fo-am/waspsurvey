@@ -19,13 +19,11 @@
   {% endif %}
 {% endblock %}
 
-
-
     {% block body %}
     <div class="category-title"><h1> {{survey.name}} </h1></div>
     
     {% if step and step != 0 %}
-    <div class="category-progress">Question {{ step }}/{{ steps }}</div>
+    <div class="category-progress">{% trans "Question" %} {{ step }}/{{ steps }}</div>
     <form id="form_root" action="{% url 'survey-detail-step' id=survey.id step=step %}" method="post">
       {% else %}
       <form action="{% url 'survey-detail' id=survey.id %}" method="post">
