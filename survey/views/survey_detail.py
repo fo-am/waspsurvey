@@ -116,6 +116,7 @@ class SurveyDetail(View):
             "survey": survey,
             "categories": categories,
             "step": step,
+            "steps": form.num_steps(),
             "asset_context": asset_context,
             "farmer": farmer,
             "location": location,

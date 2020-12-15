@@ -79,7 +79,8 @@ class Survey(models.Model):
         return out
 
     def non_empty_categories(self,seed):        
-        cats = [x for x in list(self.categories.order_by("order", "id")) if x.questions.count() > 0] 
+        cats = [x for x in list(self.categories.order_by("order", "id")) if x.questions.count() > 0]
+        print(cats)
         return self.shuffle_order_categories(seed,cats)
         
     def is_all_in_one_page(self):

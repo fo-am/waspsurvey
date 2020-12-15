@@ -310,6 +310,9 @@ class ResponseForm(models.ModelForm):
                 return True
         return False
 
+    def num_steps(self):
+        return len(self.survey.non_empty_categories(0))
+        
     def next_step_url(self):
         if self.has_next_step():
             context = {"id": self.survey.id, "step": self.step + 1}
