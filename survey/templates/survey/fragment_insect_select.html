@@ -1,5 +1,6 @@
 {% for insect in insects %}
 
+<div id="{{ insect.name }}-container">
 <label class="image-label" for="{{ insect.name }}">		  
   <input type="checkbox"
 	 class="image-checkbox"
@@ -9,10 +10,11 @@
   <img class="insect_image" src="/{{ insect.photo }}">
   <script>
     document.addEventListener("DOMContentLoaded", function(event) { 
-    link_insect_selector("{{ insect.name }}","id_{{form.name}}");
+    link_insect_selector("{{ insect.name }}","id_{{form.name}}","{{ form.field.widget.attrs.choices }}");
     });
   </script>
 </label>
+</div>
 
 {% endfor %}
 <br>

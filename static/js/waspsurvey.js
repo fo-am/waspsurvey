@@ -32,6 +32,10 @@ function list_add(l,v) {
     return l;
 }
 
+function in_list(v,l) {
+    return l.includes(v);
+}
+
 //////////////////////////////////////////////////////////
 
 function object_to_csv(o) {
@@ -78,8 +82,7 @@ function link_slider(from,to) {
 }
 
 
-function link_insect_selector(from,to) {
-    console.log(to);
+function link_insect_selector(from,to,filt) {
     $("#"+to).val("");
     $("#"+to).hide();
     $("#"+from).on("change", function(event) {
@@ -93,6 +96,15 @@ function link_insect_selector(from,to) {
 	
 	$("#"+to).val(list_to_csv(l));
     }); 
+
+    var container = "#"+from+"-container";
+
+    if (filt!="" && !in_list(from,filt)) {
+	//console.log("hiding");
+	$(container).hide();
+    } else {
+	//console.log("not hiding");
+    }
 }
 
 function insect_selector_none(to) {
@@ -192,7 +204,6 @@ function setup_insects_feel(id) {
 //////////////////////////////////////////////////////////
 
 function link_other_field(id) {
-    console.log(id);
     var w = $("#"+id);
     // find and hide the div box we are in
     w=w.parent().parent();

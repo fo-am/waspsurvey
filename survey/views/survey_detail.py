@@ -67,6 +67,10 @@ class SurveyDetail(View):
         except Question.DoesNotExist:
             location="no location question"
 
+        # get list of insects from current insect select question
+        #print(form.fields)
+        
+            
         #  load known insects if they have been recorded yet
         known_insects = []
         try:
