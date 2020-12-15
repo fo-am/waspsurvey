@@ -7,13 +7,14 @@
 
 body {
     font-family: 'Noto Serif', serif;
-    font-size: 200%;
-    background: #39b582; 
+    font-size: 150%;
+/*    background: #39b582; */
+    background: #efefef;
 }
 
 h1, h2, h3 {
     text-align: center;
-    color: white;
+    color: black;
 }
 
 textarea, select, input[type="number"], input[type="text"] {
@@ -159,11 +160,12 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
     margin-right: auto;
     margin-bottom: 1em;
     padding: 1em;
-    border-radius: 1em;
+    border-radius: 0.5em;
 /*    background: #39b582; */
 /*    border: 4px solid #39b582; */
     background: #c2ebff;
-    box-shadow: 5px 5px 5px #199562;
+/*    box-shadow: 5px 5px 5px #199562;*/
+    box-shadow: 5px 5px 5px #9f9f9f;
 }
 
 .question-label {
