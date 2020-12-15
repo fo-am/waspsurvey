@@ -311,7 +311,7 @@ class ResponseForm(models.ModelForm):
         return False
 
     def num_steps(self):
-        return len(self.survey.non_empty_categories(0))
+        return len(self.survey.non_empty_categories(0))-1
         
     def next_step_url(self):
         if self.has_next_step():
