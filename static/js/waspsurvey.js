@@ -125,6 +125,9 @@ function update_wasp_id(wasp_id,dest) {
 }
 
 function link_insect_wasp_bee(from,to,filt) {
+    console.log("ehehe")
+    console.log(from)
+
     $("#"+to).val("");
     $("#"+to).hide();
     $("#"+from+"-wasp").on("change", function(event) {

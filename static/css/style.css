@@ -221,19 +221,25 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 80px;
-  height: 80px;
+  max-width: 50px;
+  max-height: 50px;
+  width: 12vw;
+  height: 12vw;
   border: 0;
   background: url('/static/images/arrow.png');
+  background-size: 100%; 
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 80px;
-  height: 80px;
-  border: 0;
-  background: url('/static/images/arrow.png');
-  cursor: pointer;
+    max-width: 50px;
+    max-height: 50px;
+    width: 12vw;
+    height: 12vw;
+    border: 0;
+    background: url('/static/images/arrow.png');
+    background-size: cover; 
+    cursor: pointer;
 }
 
 .insect-feel {
@@ -242,19 +248,24 @@ input[type="checkbox"]:checked, input[type="radio"]:checked {
 }
 
 .feelcontainer {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
 }
 
 .feelface {
+    flex-grow: 1;
+    box-sizing: border-box;
     vertical-align: top;
-    display: inline-block;
-    width: 19%;
-    margin: auto;
+
+
+    margin: 0;
 }
 
 .feelimg {
+    max-width: 100px;
     width: 12vw;
 }
 

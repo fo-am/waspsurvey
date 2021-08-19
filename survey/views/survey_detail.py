@@ -53,20 +53,23 @@ class SurveyDetail(View):
             farmer="no user is farmer question"
         
         # get insects by location
-        insects = []
-        location = ""
-        try:
-            q=Question.objects.get(code=Question.USER_LOCATION,survey=survey)            
-            session_key = "survey_%s" % (kwargs["id"],)
-            if session_key in request.session:
-                question_id = "question_"+str(q.id)
-                if question_id in request.session[session_key]:
-                    location = request.session[session_key][question_id]
-                    # need to get randomize from original question ideally
-                    insects = Insect.objects.filter(location__icontains=location).order_by('?')
-        except Question.DoesNotExist:
-            location="no location question"
+        # insects = []
+        # location = ""
+        # try:
+        #     q=Question.objects.get(code=Question.USER_LOCATION,survey=survey)            
+        #     session_key = "survey_%s" % (kwargs["id"],)
+        #     if session_key in request.session:
+        #         question_id = "question_"+str(q.id)
+        #         if question_id in request.session[session_key]:
+        #             location = request.session[session_key][question_id]
+        #             # need to get randomize from original question ideally
+        #             insects = Insect.objects.filter(location__icontains=location).order_by('?')                    
+        # except Question.DoesNotExist:
+        #     location="no location question"
 
+        location="no location question"
+        insects = Insect.objects.all().order_by('?')                    
+            
         # get list of insects from current insect select question
         #print(form.fields)
         
@@ -86,7 +89,8 @@ class SurveyDetail(View):
                         known_insects = Insect.objects.filter(name__in=known_list).order_by('?')
                     else:
                         # if none have been picked through them all in
-                        known_insects = Insect.objects.filter(location__icontains=location).order_by('?')
+                        #known_insects = Insect.objects.filter(location__icontains=location).order_by('?')
+                        known_insects = Insect.objects.filter().order_by('?')
         except Question.DoesNotExist:
             pass
 
