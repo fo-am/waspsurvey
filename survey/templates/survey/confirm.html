@@ -6,10 +6,16 @@
 {% block body %}
 <h1>{% trans "Survey submitted"%}</h1>
 <p>
-    <div class="alert alert-success">
-       {% trans "Thanks! Your answers have been saved" %}
+    <div class="question-top">
+      <div class="question">
+		<center>
+		<p>{% trans "Thanks for your answers!" %}</p>
+		<p>{% trans "You can find more info about wasps, bees, and the project at <a href='http://www.ecowasps.org/'>this website.</a>" %}</p>
+		</center>
+	  </div>	  
     </div>
-<!--    {% if response.survey.editable_answers %}
+	
+	<!--    {% if response.survey.editable_answers %}
         <div class="alert alert-info">
            {% trans "You can always come back and change them." %}
         </div>
