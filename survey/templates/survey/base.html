@@ -12,7 +12,9 @@
     {% block extracss %}{% endblock %}
   </head>
   <body>
-    <div class="container" id="wrap">      
+	<center><img src="{% static 'images/UCL_logo.png'%}"></center>
+
+	<div class="container" id="wrap">      
       {% block wrapper %}{% endblock %}
       {% block body %}{% endblock %}
     </div>
