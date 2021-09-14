@@ -51,7 +51,6 @@ function csv_to_object(s) {
     o = {};
     l = s.split(",");
     for (var i=0; i<l.length; i++) {
-	console.log(l[i]);
 	kv=l[i].split(":");
 	o[kv[0]]=kv[1];
     }
@@ -76,7 +75,6 @@ function push_slider(v,slider_id) {
 function link_slider(from,to) {
     $("#"+to).hide();
     $("#"+from).on("change", function(event) {
-	console.log(event.target.value);
 	$("#"+to).val(event.target.value);
     });    
 }
@@ -99,7 +97,7 @@ function link_insect_selector(from,to,filt) {
 
     var container = "#"+from+"-container";
     if (filt!="" && !in_list(from,filt)) {
-	$(container).hide();
+		$(container).hide();
     }
 }
 
@@ -125,9 +123,6 @@ function update_wasp_id(wasp_id,dest) {
 }
 
 function link_insect_wasp_bee(from,to,filt) {
-    console.log("ehehe")
-    console.log(from)
-
     $("#"+to).val("");
     $("#"+to).hide();
     $("#"+from+"-wasp").on("change", function(event) {
@@ -156,7 +151,7 @@ function link_insect_wasp_bee(from,to,filt) {
 
     var container = "#"+from+"-container";
     if (filt!="" && !in_list(from,filt)) {
-	$(container).hide();
+		$(container).parent().hide();
     }	
 }
 
