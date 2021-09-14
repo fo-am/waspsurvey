@@ -19,6 +19,7 @@ class SurveyDetail(View):
     def get(self, request, *args, **kwargs):
         survey = kwargs.get("survey")
         step = kwargs.get("step", 0)
+
         if survey.template is not None and len(survey.template) > 4:
             template_name = survey.template
         else:
@@ -87,13 +88,17 @@ class SurveyDetail(View):
                     known_list = i.split(",")
                     if len(known_list)>0 and i!="none":
                         known_insects = Insect.objects.filter(name__in=known_list).order_by('?')
-                    else:
+                    #else:
                         # if none have been picked through them all in
                         #known_insects = Insect.objects.filter(location__icontains=location).order_by('?')
-                        known_insects = Insect.objects.filter().order_by('?')
+                        #known_insects = Insect.objects.filter().order_by('?')
         except Question.DoesNotExist:
             pass
 
+        # skip name insects, if we don't know any insects
+        for qname,field in form.fields.items():
+            if field.widget.attrs["type"]=="name-insect" and len(known_insects)==0:
+                return redirect("/survey/%s-%s" % (survey.id,str(int(step)+1)))
 
         wasp_id = 0
         # check the current categories for a wasp ID
